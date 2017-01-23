@@ -266,7 +266,7 @@
 					<br />
                   </div>
                     <td>
-                       <a href="<?php echo site_url('Home/download');?>"><button type="submit" class="btn btn-primary">Download Report</button></a>
+                       <a href="<?php echo site_url('Home/exportcsv');?>"><button type="submit" class="btn btn-primary">Download Report</button></a>
                     </td>
                 </div>
               </div>

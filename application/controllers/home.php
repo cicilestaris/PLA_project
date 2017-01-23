@@ -197,28 +197,17 @@ class Home extends CI_Controller {
 	}
 	
 		//DOWNLOAD REPORT
-		public function download($limit=100,$offset=0,$order_column='port',$order_type='asc'){
+		public function exportcsv() {
+        $this->load->dbutil();
+        $this->load->helper('file');
         $this->load->helper('download');
-        if(empty($offset)) $offset=0;
-        if(empty($order_column)) $order_column='port';
-        if(empty($order_type)) $order_type='asc';
+        $delimiter = ",";
+        $newline = "\r\n";
+        $filename = "datektransport.xls";
+        $query = "SELECT * FROM port";
+        $result = $this->db->query($query);
+        $data = $this->dbutil->csv_from_result($result, $delimiter, $newline);
+        force_download($filename, $data);
+	}
         
-        //load data
-        $data=$this->tn_model->semua($this->$limit,$offset,$order_column,$order_type)->result();
-        //$html = $this->load->view('admin/report/tables_report', $data, true);
-
-        /*$config['total_rows']=$this->tn_model->jumlah();
-        $config['per_page']=$limit;
-        $config['uri_segment']=3;
-        $this->pagination->initialize($config);*/
-        /*$data['pagination']=$this->pagination->create_links();*/
-        
-        foreach ($data as $row) {            
-            $data=file_get_contents("admin/report/tables_report".$row->file);
-            $name = 'datektransport.pdf';
-
-            force_download($name,$data);
-        }
-        
-    }
 }
