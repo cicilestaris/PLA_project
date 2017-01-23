@@ -205,15 +205,16 @@ class Home extends CI_Controller {
         
         //load data
         $data=$this->tn_model->semua($this->$limit,$offset,$order_column,$order_type)->result();
-        
+        //$html = $this->load->view('admin/report/tables_report', $data, true);
+
         /*$config['total_rows']=$this->tn_model->jumlah();
-        $config['per_page']=$this->limit;
+        $config['per_page']=$limit;
         $config['uri_segment']=3;
-        $this->pagination->initialize($config);
-        $data['pagination']=$this->pagination->create_links();*/
+        $this->pagination->initialize($config);*/
+        /*$data['pagination']=$this->pagination->create_links();*/
         
         foreach ($data as $row) {            
-            $data=file_get_contents("./assets/files/".$row->file);
+            $data=file_get_contents("admin/report/tables_report".$row->file);
             $name = 'datektransport.pdf';
 
             force_download($name,$data);

@@ -82,11 +82,11 @@ class tn_model extends CI_Model {
 	}
 
 	//fungsi download
-	function semua($limit=100,$offset=0,$order_column='port',$order_type='asc'){
+	function semua($limit=100,$offset=0,$order_column='port',$order_type='dsc'){
         // $db1 = $this->load->database('default',TRUE);
         
         if(empty($order_column) || empty($order_type))
-            $this->db->order_by($this->primary,'asc');
+            $this->db->order_by($this->primary,'dsc');
         else
             $this->db->order_by($order_column,$order_type);
         return  $this->db->get('port',$limit,$offset);
