@@ -26,6 +26,7 @@
 
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url('asset/admin/build/css/custom.min.css'); ?>" rel="stylesheet">
+	
   </head>
 
   <body class="nav-md">
@@ -190,18 +191,19 @@
               <div class="title_left">
                 <h3>Sistem Inventory Data Teknis Transport</h3>
               </div>
-
-              <div class="title_right">
-                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+            </div>
+			
+			<!-- Searching -->
+			<div class="title_right">
+                <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
                   <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Go!</button>
-                    </span>
+                    <form action="<?php print site_url();?>/home/cari" method=POST>
+					<input type=text name=cari>
+					<button class="btn btn-default" type="submit">Search</button>
+					</form>
                   </div>
                 </div>
-              </div>
-            </div>
+			</div>
 
             <div class="clearfix"></div>
 
@@ -217,10 +219,6 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-					<br />
-						<?php echo $this->pagination->create_links(); ?>
-					<br />
-					<br />
                     <table id="datatable-buttons" class="table table-striped table-bordered">
                       <thead>
                         <tr>

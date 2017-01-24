@@ -86,7 +86,25 @@ class tn_model extends CI_Model {
         $this->db->export('port', $data);
     }
 	
-
+	
+	//fungsi searching
+	function tampil(){
+		$query = $this->db->get('port');
+		return $query->result(); 
+	}
+	
+	function caridata(){
+		$c = $this->input->POST('cari');
+		$this->db->like('nama_nms', $c);
+		$this->db->or_like('nama_lokasi', $c);
+		$this->db->or_like('nama_ne', $c);
+		$this->db->or_like('frekuensi', $c);
+		$this->db->or_like('board', $c);
+		$this->db->or_like('frekuensi', $c);
+		$query = $this->db->get('port');
+		return $query->result(); 
+	}
+	
 }
 
 /* End of file employee.php */
