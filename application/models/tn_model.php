@@ -81,13 +81,13 @@ class tn_model extends CI_Model {
 			$this->db->insert('port', $data);
 	}
 
-	//fungsi download
+	//FUNGSI DOWNLOAD
 	function export_csv($data) {
         $this->db->export('port', $data);
     }
 	
 	
-	//fungsi searching
+	//FUNGSI SEARCHING
 	function tampil(){
 		$query = $this->db->get('port');
 		return $query->result(); 

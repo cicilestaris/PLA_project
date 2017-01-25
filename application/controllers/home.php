@@ -234,7 +234,7 @@ class Home extends CI_Controller {
 			//jika data yang dicari tidak ada maka akan keluar informasi 
 			//bahwa data yang dicari tidak ada
 			if($data['port']==null) {
-				print 'maaf data yang anda cari tidak ada atau keywordnya salah -->';
+				print 'maaf data yang anda cari tidak ada atau keywordnya salah  ';
 				print anchor('home','kembali');
 			}else{
 				$this->load->database();
