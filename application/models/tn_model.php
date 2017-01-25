@@ -85,9 +85,7 @@ class tn_model extends CI_Model {
 	function export_csv($data) {
         $this->db->export('port', $data);
     }
-<<<<<<< HEAD
-=======
-	
+
 	
 	//fungsi searching
 	function tampil(){
@@ -106,8 +104,12 @@ class tn_model extends CI_Model {
 		$query = $this->db->get('port');
 		return $query->result(); 
 	}
-	
->>>>>>> edfc940bdcaf1ff028f0e5e9b5e8ba7f192080c4
+
+	//function insert port
+	/*function insert_port($data){
+			$this->db->insert('port', $data);
+	}
+	*/
 }
 
 /* End of file employee.php */

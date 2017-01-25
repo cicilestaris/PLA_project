@@ -191,12 +191,7 @@
               <div class="title_left">
                 <h3>Sistem Inventory Data Teknis Transport</h3>
               </div>
-<<<<<<< HEAD
-
-              
-            
             </div>
-=======
             </div>
 			
 			<!-- Searching -->
@@ -210,7 +205,7 @@
                   </div>
                 </div>
 			</div>
->>>>>>> edfc940bdcaf1ff028f0e5e9b5e8ba7f192080c4
+
 
             <div class="clearfix"></div>
 
@@ -227,14 +222,12 @@
 
                   </div>
                   <div class="x_content">
-<<<<<<< HEAD
-					<!-- <br />
+<!-- 
+					<br />
 						<?php echo $this->pagination->create_links(); ?>
 					<br />
 					<br /> -->
           
-=======
->>>>>>> edfc940bdcaf1ff028f0e5e9b5e8ba7f192080c4
                     <table id="datatable-buttons" class="table table-striped table-bordered">
                       <thead>
                         <tr>
@@ -274,10 +267,10 @@
             <?php }?>  
                       </tbody>
                     </table>
-					<!-- <br />
+					<br />
 						<?php echo $this->pagination->create_links(); ?>
 					<br />
-					<br /> -->
+					<br />
                   </div>
                     <td>
                        <a href="<?php echo site_url('Home/exportcsv');?>"><button type="submit" class="btn btn-primary">Download Report</button></a>
