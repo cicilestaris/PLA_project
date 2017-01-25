@@ -133,6 +133,8 @@ class Home extends CI_Controller {
 	
 	 }
 
+	 
+
 		public function insert_single_perangkat(){
 		$this->load->view('admin/perangkat/insert_single_perangkat');
 	}
@@ -221,12 +223,22 @@ class Home extends CI_Controller {
         $this->load->helper('download');
         $delimiter = ",";
         $newline = "\r\n";
+
+        $filename = "datektransport.xls";
+        $query = "SELECT * FROM port WHERE tn_model = 'DUMAI'";
+
         $filename = "datektransport.csv";
         $query = "SELECT * FROM port";
+
         $result = $this->db->query($query);
         $data = $this->dbutil->csv_from_result($result, $delimiter, $newline);
         force_download($filename, $data);
 	}
+
+
+        
+
+
 	
 		//SEARCH REPORT
 		public function cari() {
@@ -252,3 +264,4 @@ class Home extends CI_Controller {
 			}
 		}
 }		
+

@@ -192,6 +192,7 @@
                 <h3>Sistem Inventory Data Teknis Transport</h3>
               </div>
             </div>
+            </div>
 			
 			<!-- SEARCHING -->
 			<div class="title_right">
@@ -205,6 +206,7 @@
                 </div>
 			</div>
 
+
             <div class="clearfix"></div>
 
               <div class="col-md-12 col-sm-12 col-xs-12">
@@ -217,8 +219,15 @@
                      
                     </ul>
                     <div class="clearfix"></div>
+
                   </div>
                   <div class="x_content">
+<!-- 
+					<br />
+						<?php echo $this->pagination->create_links(); ?>
+					<br />
+					<br /> -->
+          
                     <table id="datatable-buttons" class="table table-striped table-bordered">
                       <thead>
                         <tr>
@@ -320,7 +329,6 @@
     <script src="<?php echo base_url('asset/admin/vendors/bootstrap-daterangepicker/daterangepicker.js'); ?>"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src="<?php echo base_url('asset/admin/build/js/custom.min.js'); ?>"></script>
     
     <!-- Datatables -->
     <script>
