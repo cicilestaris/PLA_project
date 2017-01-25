@@ -87,6 +87,15 @@ class Home extends CI_Controller {
 	}	
 	
 	public function proses_insert_nms(){
+		$this->load->database();
+		$jumlah_data = $this->tn_model->jumlah_data();
+		$this->load->library('pagination');
+		$config['base_url'] = base_url().'index.php/home/table_nms';
+		$config['total_rows'] = $jumlah_data;
+		$config['per_page'] = 100;
+		$from = $this->uri->segment(3);
+		$this->pagination->initialize($config);
+		
         $data['id_port'] = $this->input->post('id_port');
 		$data['nama_nms'] = $this->input->post('nama_nms');
         $data['nama_lokasi'] = $this->input->post('nama_lokasi');
@@ -101,13 +110,22 @@ class Home extends CI_Controller {
         $data['user']=$this->input->post('user');
         $data['deskripsi']=$this->input->post('deskripsi');
 		$this->tn_model->insert_port($data);
-
-        $data['port'] = $this->tn_model->get_port()->result();
+		
+		$data['port'] = $this->tn_model->data($config['per_page'],$from);
 		$data['merk'] = $this->tn_model->get_merk_by_id($data['port'][0]->id_merk)->result();
 		$this->load->view('admin/nms/tables_nms', $data);
     }
 
 	 public function delete_nms($id_port){
+		/*$this->load->database();
+		$jumlah_data = $this->tn_model->jumlah_data();
+		$this->load->library('pagination');
+		$config['base_url'] = base_url().'index.php/home/table_nms';
+		$config['total_rows'] = $jumlah_data;
+		$config['per_page'] = 100;
+		$from = $this->uri->segment(3);
+		$this->pagination->initialize($config);*/
+		
 	 	$this->tn_model->delete_nms($id_port);
 		$data['port'] = $this->tn_model->get_port()->result();
 		$data['merk'] = $this->tn_model->get_merk_by_id($data['port'][0]->id_merk)->result();
@@ -203,12 +221,45 @@ class Home extends CI_Controller {
         $this->load->helper('download');
         $delimiter = ",";
         $newline = "\r\n";
+<<<<<<< HEAD
         $filename = "datektransport.xls";
         $query = "SELECT * FROM port WHERE tn_model = 'DUMAI'";
+=======
+        $filename = "datektransport.csv";
+        $query = "SELECT * FROM port";
+>>>>>>> edfc940bdcaf1ff028f0e5e9b5e8ba7f192080c4
         $result = $this->db->query($query);
         $data = $this->dbutil->csv_from_result($result, $delimiter, $newline);
         force_download($filename, $data);
 	}
+<<<<<<< HEAD
 
         
 }
+=======
+	
+		//SEARCH REPORT
+		public function cari() {
+			$data['port']=$this->tn_model->caridata();
+			//jika data yang dicari tidak ada maka akan keluar informasi 
+			//bahwa data yang dicari tidak ada
+			if($data['port']==null) {
+				print 'maaf data yang anda cari tidak ada atau keywordnya salah -->';
+				print anchor('home','kembali');
+			}else{
+				$this->load->database();
+				$jumlah_data = $this->tn_model->jumlah_data();
+				$this->load->library('pagination');
+				$config['base_url'] = base_url().'index.php/home/table_report';
+				$config['total_rows'] = $jumlah_data;
+				$config['per_page'] = 100;
+				$from = $this->uri->segment(3);
+				$this->pagination->initialize($config);
+				
+				//$data['port'] = $this->tn_model->data($config['per_page'],$from);
+				$data['merk'] = $this->tn_model->get_merk_by_id($data['port'][0]->id_merk)->result();
+				$this->load->view('admin/report/tables_report',$data); 
+			}
+		}
+}		
+>>>>>>> edfc940bdcaf1ff028f0e5e9b5e8ba7f192080c4

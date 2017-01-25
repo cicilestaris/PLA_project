@@ -211,7 +211,7 @@
           <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Transport Users</h2>
+                    <h2>Data Teknik</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
                     </ul>
@@ -317,12 +317,12 @@
                 <?php }?>  
                       </tbody>
                     </table>
-                        <br />
-         <ul class="pagination">
+                    <br />
+					<ul class="pagination">
                           <li ><?php echo $this->pagination->create_links(); ?></li>
-                        </ul>
-          <br />
-          <br />
+                    </ul
+					<br />
+					<br />
                   </div>
                     <td>
                        <a href="<?php echo site_url('Home/insert_single_nms');?>"><button type="submit" class="btn btn-primary">Insert Single Data</button></a>
