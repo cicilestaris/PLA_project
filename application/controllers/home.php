@@ -14,8 +14,7 @@ class Home extends CI_Controller {
 		$data['port'] = $this->tn_model->get_port()->result();
 		$data['merk'] = $this->tn_model->get_merk_by_id($data['port'][0]->id_merk)->result();
 		
-		$this->load->view('admin/index',$data);
-		
+		$this->load->view('admin/index',$data);	
 	}
 
 	public function table_nms(){
@@ -235,11 +234,6 @@ class Home extends CI_Controller {
         force_download($filename, $data);
 	}
 
-
-        
-
-
-	
 		//SEARCH REPORT
 		public function cari() {
 			$data['port']=$this->tn_model->caridata();

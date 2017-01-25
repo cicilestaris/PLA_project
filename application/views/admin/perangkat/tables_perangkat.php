@@ -348,16 +348,10 @@
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <ul class="nav side-menu">
-<<<<<<< HEAD
                 <li><a href="<?php echo site_url('Home/table_nms');?>"><i class="fa fa-table"></i> NMS </a>
                 <li><a href="<?php echo site_url('link');?>"><i class="fa fa-table"></i> Transport Users </a></li>
                 <li><a href="<?php echo site_url('Home/table_report');?>"><i class="fa fa-table"></i> Report </a></li>
 				</li>
-=======
-                 <li><a href="<?php echo site_url('Home/table_nms');?>"><i class="fa fa-table"></i> NMS </a>
-                  <li><a href="<?php echo site_url('link');?>"><i class="fa fa-table"></i> Transport Users </a></li>
-                  </li>
->>>>>>> 8c4c5b80b68a8d87ffec905416472f1db2640e42
                 </ul>
               </div>
 
