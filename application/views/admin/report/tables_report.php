@@ -191,16 +191,8 @@
                 <h3>Sistem Inventory Data Teknis Transport</h3>
               </div>
 
-              <div class="title_right">
-                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Go!</button>
-                    </span>
-                  </div>
-                </div>
-              </div>
+              
+            
             </div>
 
             <div class="clearfix"></div>
@@ -215,12 +207,14 @@
                      
                     </ul>
                     <div class="clearfix"></div>
+
                   </div>
                   <div class="x_content">
-					<br />
+					<!-- <br />
 						<?php echo $this->pagination->create_links(); ?>
 					<br />
-					<br />
+					<br /> -->
+          
                     <table id="datatable-buttons" class="table table-striped table-bordered">
                       <thead>
                         <tr>
@@ -260,10 +254,10 @@
             <?php }?>  
                       </tbody>
                     </table>
-					<br />
+					<!-- <br />
 						<?php echo $this->pagination->create_links(); ?>
 					<br />
-					<br />
+					<br /> -->
                   </div>
                     <td>
                        <a href="<?php echo site_url('Home/exportcsv');?>"><button type="submit" class="btn btn-primary">Download Report</button></a>
@@ -322,7 +316,6 @@
     <script src="<?php echo base_url('asset/admin/vendors/bootstrap-daterangepicker/daterangepicker.js'); ?>"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src="<?php echo base_url('asset/admin/build/js/custom.min.js'); ?>"></script>
     
     <!-- Datatables -->
     <script>

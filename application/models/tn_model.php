@@ -85,8 +85,6 @@ class tn_model extends CI_Model {
 	function export_csv($data) {
         $this->db->export('port', $data);
     }
-	
-
 }
 
 /* End of file employee.php */

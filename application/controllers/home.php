@@ -204,10 +204,11 @@ class Home extends CI_Controller {
         $delimiter = ",";
         $newline = "\r\n";
         $filename = "datektransport.xls";
-        $query = "SELECT * FROM port";
+        $query = "SELECT * FROM port WHERE tn_model = 'DUMAI'";
         $result = $this->db->query($query);
         $data = $this->dbutil->csv_from_result($result, $delimiter, $newline);
         force_download($filename, $data);
 	}
+
         
 }
