@@ -222,51 +222,40 @@
 
                   </div>
                   <div class="x_content">
-<!-- 
-					<br />
-						<?php echo $this->pagination->create_links(); ?>
-					<br />
-					<br /> -->
-          
-                    <table id="datatable-buttons" class="table table-striped table-bordered">
-                      <thead>
-                        <tr>
-                          <th>No</th>
-                          <th>NMS</th>
-                          <th>Lokasi</th>
-                          <th>Merk</th>
-                          <th>NE</th>
-                          <th>Rak</th>
-                          <th>Shelf</th>
-                          <th>Slot</th>
-                          <th>Port</th>
-                          <th>Board</th>
-                          <th>Frekuensi</th>
-                          <th>Deskripsi</th>
-                        </tr>
-                      </thead>
+					<table id="datatable-buttons" class="table table-striped table-bordered">
+						<thead>
+							<tr>
+								<th>No</th>
+								<th>Node A</th>
+								<th>Node B</th>
+								<th>Client A</th>
+								<th>Client B</th>
+								<th>NMS</th>
+								<th>NE A</th>
+								<th>NE B</th>
+							</tr>
+						</thead>
 
-
-                      <tbody>
-            <?php foreach($port as $portt){
-              $i=$portt->id_merk?>
-                        <tr>
-                          <td><?php echo $portt->id_port?></td>
-                          <td><?php echo $portt->nama_nms?></td>
-                          <td><?php echo $portt->nama_lokasi?></td>
-                          <td><?php echo $merk[$i-1]->nama_merk?></td>
-                          <td><?php echo $portt->nama_ne?></td>
-                          <td><?php echo $portt->rack?></td>
-                          <td><?php echo $portt->shelf?></td>
-                          <td><?php echo $portt->slot?></td>
-                          <td><?php echo $portt->port?></td>
-                          <td><?php echo $portt->board?></td>
-                          <td><?php echo $portt->frekuensi?></td>
-                          <td><?php echo $portt->deskripsi?></td>
-                        </tr>
-            <?php }?>  
-                      </tbody>
-                    </table>
+					<tbody>
+						<?php 
+						$no = 0;
+						foreach($link_statis as $linkk){
+						$no++;
+						?>
+							<tr>
+								<td><?php echo $no?></td>
+								<td><?php echo $linkk->host_a?></td>
+								<td><?php echo $linkk->host_b?></td>
+								<td><?php echo $linkk->fa_a?></td>
+								<td><?php echo $linkk->fa_b?></td>
+								<td><?php echo $linkk->nms?></td>
+								<td><?php echo $linkk->ne_a?></td>
+								<td><?php echo $linkk->ne_b?></td>
+							</tr>
+						<?php }?>  
+					</tbody>
+					</table>
+					
 					<br />
 						<?php echo $this->pagination->create_links(); ?>
 					<br />

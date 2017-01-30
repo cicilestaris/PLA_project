@@ -10,10 +10,8 @@ class Home extends CI_Controller {
 	}
 
 	public function index(){
-	
 		$data['port'] = $this->tn_model->get_port()->result();
 		$data['merk'] = $this->tn_model->get_merk_by_id($data['port'][0]->id_merk)->result();
-		
 		$this->load->view('admin/index',$data);	
 	}
 
@@ -36,8 +34,8 @@ class Home extends CI_Controller {
 		$data['link_statis'] = $this->tn_model->get_link_statis()->result();
 		$this->load->view('admin/perangkat/tables_perangkat', $data);
 	}
+	
 	public function table_perangkat(){
-		
 		$data['link_statis'] = $this->tn_model->get_link_statis()->result();
 		$this->load->view('admin/perangkat/tables_perangkat', $data);
 	}
@@ -45,16 +43,14 @@ class Home extends CI_Controller {
 	public function insert_single_nms(){
 		$this->load->view('admin/nms/insert_single_nms');
 	}
+	
 	public function insert_double_nms(){
 		$this->load->view('admin/nms/insert_double_nms');
 	}
 	public function edit_nms($id_port){
-
 		$data['port']=$this->tn_model->get_port_by_id($id_port)->row();
 		$data['merk']=$this->tn_model->get_merk()->result();
-
 		$this->load->view('admin/nms/edit_nms',$data);
-
 	}
 
 	 public function proses_edit_nms(){
@@ -77,11 +73,9 @@ class Home extends CI_Controller {
    		$data['port'] = $this->tn_model->get_port()->result();
 		$data['merk'] = $this->tn_model->get_merk_by_id($data['port'][0]->id_merk)->result();
 		$this->load->view('admin/nms/tables_nms', $data);
-	
-		
 	 }
 
-	 function insert_nms($id_port){
+	function insert_nms($id_port){
 		$this->load->view('admin/nms/insert_single_nms');
 	}	
 	
@@ -115,7 +109,7 @@ class Home extends CI_Controller {
 		$this->load->view('admin/nms/tables_nms', $data);
     }
 
-	 public function delete_nms($id_port){
+	public function delete_nms($id_port){
 		/*$this->load->database();
 		$jumlah_data = $this->tn_model->jumlah_data();
 		$this->load->library('pagination');
@@ -130,11 +124,9 @@ class Home extends CI_Controller {
 		$data['merk'] = $this->tn_model->get_merk_by_id($data['port'][0]->id_merk)->result();
 		$this->load->view('admin/nms/tables_nms', $data);
 	
-	 }
+	}
 
-	 
-
-		public function insert_single_perangkat(){
+	public function insert_single_perangkat(){
 		$this->load->view('admin/perangkat/insert_single_perangkat');
 	}
 
@@ -201,19 +193,18 @@ class Home extends CI_Controller {
 		
 		//REPORT
 		public function table_report(){
-		$this->load->database();
-		$jumlah_data = $this->tn_model->jumlah_data();
-		$this->load->library('pagination');
-		$config['base_url'] = base_url().'index.php/home/table_report';
-		$config['total_rows'] = $jumlah_data;
-		$config['per_page'] = 100;
-		$from = $this->uri->segment(3);
-		$this->pagination->initialize($config);
+			$this->load->database();
+			$jumlah_data = $this->tn_model->jumlah_data2();
+			$this->load->library('pagination');
+			$config['base_url'] = base_url().'index.php/home/table_report';
+			$config['total_rows'] = $jumlah_data;
+			$config['per_page'] = 10;
+			$from = $this->uri->segment(3);
+			$this->pagination->initialize($config);
 
-		$data['port'] = $this->tn_model->data($config['per_page'],$from);
-		$data['merk'] = $this->tn_model->get_merk_by_id($data['port'][0]->id_merk)->result();
-		$this->load->view('admin/report/tables_report', $data);
-	}
+			$data['link_statis'] = $this->tn_model->data2($config['per_page'],$from);
+			$this->load->view('admin/report/tables_report', $data);
+		}
 	
 		//DOWNLOAD REPORT
 		public function exportcsv() {
@@ -223,28 +214,25 @@ class Home extends CI_Controller {
         $delimiter = ",";
         $newline = "\r\n";
 
-        $filename = "datektransport.xls";
-        $query = "SELECT * FROM port WHERE tn_model = 'DUMAI'";
-
         $filename = "datektransport.csv";
-        $query = "SELECT * FROM port";
+        $query = "SELECT * FROM link_statis";
 
         $result = $this->db->query($query);
         $data = $this->dbutil->csv_from_result($result, $delimiter, $newline);
         force_download($filename, $data);
-	}
+		}
 
 		//SEARCH REPORT
 		public function cari() {
-			$data['port']=$this->tn_model->caridata();
+			$data['link_statis']=$this->tn_model->caridata();
 			//jika data yang dicari tidak ada maka akan keluar informasi 
 			//bahwa data yang dicari tidak ada
-			if($data['port']==null) {
+			if($data['link_statis']==null) {
 				print 'maaf data yang anda cari tidak ada atau keywordnya salah  ';
 				print anchor('home','kembali');
 			}else{
 				$this->load->database();
-				$jumlah_data = $this->tn_model->jumlah_data();
+				$jumlah_data = $this->tn_model->jumlah_data2();
 				$this->load->library('pagination');
 				$config['base_url'] = base_url().'index.php/home/table_report';
 				$config['total_rows'] = $jumlah_data;
@@ -252,10 +240,9 @@ class Home extends CI_Controller {
 				$from = $this->uri->segment(3);
 				$this->pagination->initialize($config);
 				
-				//$data['port'] = $this->tn_model->data($config['per_page'],$from);
-				$data['merk'] = $this->tn_model->get_merk_by_id($data['port'][0]->id_merk)->result();
+				$data2['link_statis'] = $this->tn_model->data2($config['per_page'],$from);
 				$this->load->view('admin/report/tables_report',$data); 
 			}
 		}
-}		
-
+	
+}
