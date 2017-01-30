@@ -670,10 +670,15 @@
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
                          <input name="id_port" type="text" hidden/>
+                         <div class="form-group" style="margin-top:11px; margin-left: -100px; position: absolute;">
                           <button id="send" type="submit" class="btn btn-success">Submit</button>
+                          </div>
                         </div>
                       </div>
                     </form>
+                     <td>
+                       <a href="<?php echo site_url('link/insert_double_perangkat');?>"><button type="submit" class="btn btn-success">Insert Multiple Data</button></a>
+                      </td>
                 </div>
               </div>
               </div>

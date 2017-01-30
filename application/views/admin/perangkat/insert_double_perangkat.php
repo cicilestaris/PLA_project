@@ -52,7 +52,7 @@
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-table"></i>Transport Users</a>
+                  <li><a><i class="fa fa-table"></i> NMS </a>
                   </li>
                 </ul>
               </div>
@@ -89,7 +89,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="images/img.jpg" alt="">John Doe
+                    <img src="asset/admin/production/images/img.jpg" alt="">John Doe
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -180,7 +180,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Sistem Inventori Data Tenis Transport</h3>
+                <h3>Sistem Inventory Data Teknis Transport</h3>
               </div>
 
               <div class="title_right">
@@ -210,10 +210,15 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                   
-                    <form action="form_upload.html" class="dropzone"></form>
+                     <form method="post" action="<?php echo site_url('Home/importcsv')?>" enctype="multipart/form-data">
+                    <input type="file" name="userfile" ><br><br>
+                    <input type="submit" name="submit" value="Upload" class="btn btn-primary">
+                   </form>
+                      
                     <br />
-                    <a href="<?php echo site_url('Home/table_perangkat')?>"><button type="submit" class="btn btn-primary">Cancel</button></a>
+                    <div class="form-group" style="margin-top:-58px; margin-left: 80px; position: absolute;">
+                      <a href="<?php echo site_url('link')?>"><button type="submit" class="btn btn-primary">Cancel</button></a>
+                      </div>
                     <br />
                     <br />
                     <br />

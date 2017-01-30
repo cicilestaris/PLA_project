@@ -212,7 +212,7 @@
                   <div class="x_content">
                      <form method="post" action="<?php echo site_url('Home/importcsv')?>" enctype="multipart/form-data">
                     <input type="file" name="userfile" ><br><br>
-                    <input type="submit" name="submit" value="UPLOAD" class="btn btn-primary">
+                    <input type="submit" name="submit" value="Upload" class="btn btn-primary">
                    </form>
                       
                     <br />
