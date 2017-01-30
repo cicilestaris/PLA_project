@@ -20,6 +20,10 @@ class Link extends CI_Controller {
 
 	}
 
+    public function insert_double_perangkat(){
+        $this->load->view('admin/perangkat/insert_double_perangkat');
+    }
+
 	public function ne(){
         $lokasi = $this->input->post('nama_lokasi');
         $data['ne'] = $this->link_model->get_ne($lokasi)->result();

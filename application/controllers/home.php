@@ -47,6 +47,11 @@ class Home extends CI_Controller {
 	public function insert_double_nms(){
 		$this->load->view('admin/nms/insert_double_nms');
 	}
+
+	public function insert_double_link(){
+		$this->load->view('admin/perangkat/insert_double_link');
+	}
+
 	public function edit_nms($id_port){
 		$data['port']=$this->tn_model->get_port_by_id($id_port)->row();
 		$data['merk']=$this->tn_model->get_merk()->result();
