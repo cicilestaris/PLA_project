@@ -768,7 +768,7 @@
                           <td><?php echo $link->shelf_b?></td>
                           <td><?php echo $link->slot_b?></td>
                           <td><?php echo $link->port_b?></td>
-                          <td> <a href="" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit <?php echo $link->id_link?></a>
+                          <td> <a href="<?php echo site_url('Link/edit_link/'.$link->id_link);?>" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit <?php echo $link->id_link?></a>
                           <a href="<?php echo site_url('Link/delete_link/'.$link->id_link);?>" class="btn btn-danger btn-xs" onclick="return doconfirm();"><i class="fa fa-trash-o"></i> Delete </a>
                           </td>
                         </tr>
