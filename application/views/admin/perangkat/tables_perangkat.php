@@ -677,7 +677,7 @@
                       </div>
                     </form>
                      <td>
-                       <a href="<?php echo site_url('link/insert_double_perangkat');?>"><button type="submit" class="btn btn-success">Insert Multiple Data</button></a>
+                       <a href="<?php echo site_url('link/insert_double_perangkat');?>"><button type="submit" class="btn btn-primary">Insert Multiple Data</button></a>
                       </td>
                 </div>
               </div>

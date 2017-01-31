@@ -210,14 +210,14 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                     <form method="post" action="<?php echo site_url('Home/importcsv')?>" enctype="multipart/form-data">
+                     <form method="post" action="<?php echo site_url('link/importcsv_link')?>" enctype="multipart/form-data">
                     <input type="file" name="userfile" ><br><br>
                     <input type="submit" name="submit" value="Upload" class="btn btn-primary">
                    </form>
                       
                     <br />
                     <div class="form-group" style="margin-top:-58px; margin-left: 80px; position: absolute;">
-                      <a href="<?php echo site_url('link')?>"><button type="submit" class="btn btn-primary">Cancel</button></a>
+                      <a href="<?php echo site_url('link')?>"> <button id="send" type="submit" class="btn btn-success">Cancel</button></a>
                       </div>
                     <br />
                     <br />

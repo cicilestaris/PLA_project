@@ -38,8 +38,24 @@ class tn_model extends CI_Model {
 			return $this->db->get();
 		}
 
+		function get_link_by_id($id){
+			$this->db->select('*');
+			$this->db->from('link_statis');
+			$this->db->where('id_link',$id);
+			return $this->db->get();
+		}
+
  	 function get_addressbook() {     
         $query = $this->db->get('port');
+        if ($query->num_rows() > 0) {
+            return $query->result_array();
+        } else {
+            return FALSE;
+        }
+    }
+
+     function get_addressbook_link() {     
+        $query = $this->db->get('link_statis');
         if ($query->num_rows() > 0) {
             return $query->result_array();
         } else {
@@ -49,6 +65,10 @@ class tn_model extends CI_Model {
  
     function insert_csv($data) {
         $this->db->insert('port', $data);
+    }
+
+     function insert_csv_link($data2) {
+        $this->db->insert('link_statis', $data2);
     }
 	 
 	// function pagination NMS

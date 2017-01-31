@@ -195,6 +195,67 @@ class Home extends CI_Controller {
             }
  
         } 
+
+        function importcsv_link() {
+        $data2['addressbook'] = $this->tn_model->get_addressbook_link();
+        $data2['error'] = '';    //initialize image upload error array to empty
+ 
+        $config['upload_path'] = './upload/';
+        $config['allowed_types'] = 'csv';
+        $config['max_size'] = '5000';
+ 
+        $this->load->library('upload', $config);
+ 
+ 
+        // If upload failed, display error
+        if (!$this->upload->do_upload()) {
+            $data2['error'] = $this->upload->display_errors();
+ 
+            $this->load->view('admin/perangkat/tables_perangkat', $data2);
+        } else {
+            $file_data = $this->upload->data();
+            $file_path =  './upload/'.$file_data['file_name'];
+ 
+            if ($this->csvimport->get_array($file_path)) {
+                $csv_array = $this->csvimport->get_array($file_path);
+                foreach ($csv_array as $roww) {
+                    $data2 = array(
+                        'id_link'=>$roww['id_link'],
+                        'host_a'=>$roww['host_a'],
+                        'host_b'=>$roww['host_b'],
+                        'fa_a'=>$roww['fa_a'],
+                        'fa_b'=>$roww['fa_b'],
+                        'nms'=>$roww['nms'],
+                        'ne_a'=>$roww['ne_a'],
+                        'board_a'=>$roww['board_a'],
+                        'rack_a'=>$roww['rack_a'],
+                        'shelf_a'=>$roww['shelf_a'],
+                        'slot_a'=>$roww['slot_a'],
+                        'port_a'=>$roww['port_a'],
+                        'freq_a'=>$roww['freq_a'],
+                        'ne_b'=>$roww['ne_b'],
+                        'board_b'=>$roww['board_b'],
+                        'rack_b'=>$roww['rack_b'],
+                        'shelf_b'=>$roww['shelf_b'],
+                        'slot_b'=>$roww['slot_b'],
+                        'port_b'=>$roww['port_b'],
+                        'freq_b'=>$roww['freq_b'],
+
+                    );
+                    $this->tn_model->insert_csv_link($data2);
+                }
+                $this->session->set_flashdata('success', 'Csv Data Imported Succesfully');
+
+               $data2['link_statis'] = $this->tn_model->get_link_statis()->result();
+				// $data['merk'] = $this->tn_model->get_merk_by_id($data['port'][0]->id_merk)->result();
+				$this->load->view('admin/perangkat/tables_perangkat', $data2);
+	
+            } else 
+                $data2['error'] = "Error occured";
+                $this->load->view('admin/perangkat/tables_perangkat', $data2);
+            }
+ 
+        } 
 		
 		//REPORT
 		public function table_report(){
