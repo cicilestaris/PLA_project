@@ -120,6 +120,16 @@ class Link extends CI_Controller {
 
     }
 
+     public function delete_link($id_link){
+        $this->link_model->delete_link($id_link);
+        $data['lokasi'] = $this->link_model->get_lokasi()->result();
+        $data['link_statis'] = $this->link_model->get_link_statis()->result();
+          redirect(site_url('link'));
+ 
+   }
+
+    
+
 /*	 function siswa()
     {
         $id = $this->input->post('id_ne');

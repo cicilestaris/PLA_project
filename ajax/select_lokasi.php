@@ -10,7 +10,19 @@ if (!empty($_GET['ne'])){
 		}
 	// }
 }
+if (!empty($_GET['board'])){
+$br = $_GET['board'];		
 
+	// if (ctype_digit($_GET['ne'])) {
+
+		$query = mysqli_query($conn,"SELECT * FROM port where nama_ne='$br'  group by board "); 
+
+		echo"<option>Pilih Board</option>";
+		while($d = mysqli_fetch_array($query,MYSQLI_BOTH)){
+			echo "<option value=".$d['board'].">".$d['board']."</option>";
+			//echo $d['nama_ne'];
+		}
+}
 if (!empty($_GET['shelf'])){
 	$t = $_GET['shelf'];
 	//html_escape($t);
@@ -51,27 +63,7 @@ $l = $_GET['n'];
 	// }
  }
 
-if (!empty($_GET['board'])){
-$br = $_GET['board'];		
-$b = $_GET['slot2'];
-$t = $_GET['sh2'];
-$l = $_GET['n2'];
-	// if (ctype_digit($_GET['ne'])) {
 
-		$nama= mysqli_query($conn, "SELECT nama_lokasi FROM lokasi where id_lokasi='$l'");
-		$hasil = mysqli_fetch_assoc($nama);
-		foreach ($hasil as $key => $nama_lokasi) {
-			$nama_lok = $nama_lokasi;
-		}
-
-		$query = mysqli_query($conn,"SELECT * FROM port where slot='$br' and shelf='$b' and nama_ne='$t' and nama_lokasi='$nama_lok' group by board "); 
-
-		echo"<option>Pilih Board</option>";
-		while($d = mysqli_fetch_array($query,MYSQLI_BOTH)){
-			echo "<option value=".$d['board'].">".$d['board']."</option>";
-			//echo $d['nama_ne'];
-		}
-}
 
 if (!empty($_GET['port'])){
 $port = $_GET['port'];		

@@ -30,6 +30,15 @@ class link_model extends CI_Model {
 			$this->db->insert('link_statis', $data);
 		}
 
+		function delete_link($id_link){
+			$this->db->where('id_link', $id_link);
+			$this->db->delete('link_statis');
+			if($this->db->affected_rows()==1){
+				return TRUE;
+			}
+			return FALSE;
+		}
+
 }
 
 /* End of file employee.php */

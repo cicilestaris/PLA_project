@@ -30,11 +30,12 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js" type="text/javascript"></script>
 
 
-        <script type="text/javascript">
+         <script type="text/javascript">
 
         var string;
         var lok;
         var sh;
+        var board;
 
           var ajaxku;
       function ajaxlokasi(id){
@@ -53,13 +54,26 @@
       function ajaxne(str){
           ajaxku = buatajax();
           var url="../ajax/select_lokasi.php";
-          url=url+"?shelf="+str;
+          url=url+"?board="+str;
+          console.log(url);
         string = str;
           ajaxku.onreadystatechange=stateChangedNe;
           ajaxku.open("GET",url,true);
           ajaxku.send(null);
       }
 
+            var ajaxku;
+      function ajaxboard(str){
+         // console.log(string);
+         board = str;
+          ajaxku = buatajax();
+          var url="../ajax/select_lokasi.php";
+          url=url+"?shelf="+string;
+          console.log(url);
+          ajaxku.onreadystatechange=stateChangedBoard;
+          ajaxku.open("GET",url,true);
+          ajaxku.send(null);
+      }
                  var ajaxku;
       function ajaxshelf(str){
           console.log(string);
@@ -67,7 +81,7 @@
           var url="../ajax/select_lokasi.php";
           sh = str;
           url=url+"?slot="+str+"&sh="+string+"&n="+lok;
-          console.log(lok);
+          console.log(url);
           ajaxku.onreadystatechange=stateChangedShelf;
           ajaxku.open("GET",url,true);
           ajaxku.send(null);
@@ -79,24 +93,14 @@
           console.log(string);
           ajaxku = buatajax();
           var url="../ajax/select_lokasi.php";
-          url=url+"?board="+str+"&slot2="+sh+"&sh2="+string+"&n2="+lok;
+          url=url+"?port="+board;
           console.log(url);
           ajaxku.onreadystatechange=stateChangedSlot;
           ajaxku.open("GET",url,true);
           ajaxku.send(null);
       }
 
-        var ajaxku;
-      function ajaxboard(str){
-          console.log(string);
-          ajaxku = buatajax();
-          var url="../ajax/select_lokasi.php";
-          url=url+"?port="+str;
-          console.log(url);
-          ajaxku.onreadystatechange=stateChangedBoard;
-          ajaxku.open("GET",url,true);
-          ajaxku.send(null);
-      }
+
 
      function buatajax(){
         if (window.XMLHttpRequest){
@@ -124,9 +128,9 @@
         if (ajaxku.readyState==4){
         data=ajaxku.responseText;
         if(data.length>=0){
-        document.getElementById("shelf").innerHTML = data;
+        document.getElementById("board").innerHTML = data;
         }else{
-        document.getElementById("shelf").value ="<option selected>Pilih Kecamatan</option>";
+        document.getElementById("board").value ="<option selected>Pilih Kecamatan</option>";
 
         }
         }
@@ -150,9 +154,9 @@
         if (ajaxku.readyState==4){
         data=ajaxku.responseText;
         if(data.length>=0){
-        document.getElementById("board").innerHTML = data;
+        document.getElementById("port").innerHTML = data;
         }else{
-        document.getElementById("board").value ="<option selected>Pilih Kecamatan</option>";
+        document.getElementById("port").value ="<option selected>Pilih Kecamatan</option>";
 
         }
         }
@@ -163,22 +167,20 @@
         if (ajaxku.readyState==4){
         data=ajaxku.responseText;
         if(data.length>=0){
-        document.getElementById("port").innerHTML = data;
+        document.getElementById("shelf").innerHTML = data;
         }else{
-        document.getElementById("port").value ="<option selected>Pilih Kecamatan</option>";
+        document.getElementById("shelf").value ="<option selected>Pilih Kecamatan</option>";
 
         }
         }
     }
     </script>
+  <script type="text/javascript">
 
-<!-- NODE B -->
-
-        <script type="text/javascript">
-
-        var string;
+       var string;
         var lok;
         var sh;
+        var board;
 
           var ajaxku;
       function ajaxlokasiB(id){
@@ -197,13 +199,26 @@
       function ajaxneB(str){
           ajaxku = buatajax();
           var url="../ajax/select_lokasi.php";
-          url=url+"?shelf="+str;
+          url=url+"?board="+str;
+          console.log(url);
         string = str;
           ajaxku.onreadystatechange=stateChangedNeB;
           ajaxku.open("GET",url,true);
           ajaxku.send(null);
       }
 
+            var ajaxku;
+      function ajaxboardB(str){
+         // console.log(string);
+         board = str;
+          ajaxku = buatajax();
+          var url="../ajax/select_lokasi.php";
+          url=url+"?shelf="+string;
+          console.log(url);
+          ajaxku.onreadystatechange=stateChangedBoardB;
+          ajaxku.open("GET",url,true);
+          ajaxku.send(null);
+      }
                  var ajaxku;
       function ajaxshelfB(str){
           console.log(string);
@@ -211,7 +226,7 @@
           var url="../ajax/select_lokasi.php";
           sh = str;
           url=url+"?slot="+str+"&sh="+string+"&n="+lok;
-          console.log(lok);
+          console.log(url);
           ajaxku.onreadystatechange=stateChangedShelfB;
           ajaxku.open("GET",url,true);
           ajaxku.send(null);
@@ -223,24 +238,13 @@
           console.log(string);
           ajaxku = buatajax();
           var url="../ajax/select_lokasi.php";
-          url=url+"?board="+str+"&slot2="+sh+"&sh2="+string+"&n2="+lok;
+          url=url+"?port="+board;
           console.log(url);
           ajaxku.onreadystatechange=stateChangedSlotB;
           ajaxku.open("GET",url,true);
           ajaxku.send(null);
       }
 
-        var ajaxku;
-      function ajaxboardB(str){
-          console.log(string);
-          ajaxku = buatajax();
-          var url="../ajax/select_lokasi.php";
-          url=url+"?port="+str;
-          console.log(url);
-          ajaxku.onreadystatechange=stateChangedBoardB;
-          ajaxku.open("GET",url,true);
-          ajaxku.send(null);
-      }
 
      function buatajax(){
         if (window.XMLHttpRequest){
@@ -251,7 +255,7 @@
         }
         return null;
     }
-    function stateChangedB(){
+       function stateChangedB(){
         var data;
         if (ajaxku.readyState==4){
         data=ajaxku.responseText;
@@ -268,9 +272,9 @@
         if (ajaxku.readyState==4){
         data=ajaxku.responseText;
         if(data.length>=0){
-        document.getElementById("shelfB").innerHTML = data;
+        document.getElementById("boardB").innerHTML = data;
         }else{
-        document.getElementById("shelfB").value ="<option selected>Pilih Kecamatan</option>";
+        document.getElementById("boardB").value ="<option selected>Pilih Kecamatan</option>";
 
         }
         }
@@ -294,9 +298,9 @@
         if (ajaxku.readyState==4){
         data=ajaxku.responseText;
         if(data.length>=0){
-        document.getElementById("boardB").innerHTML = data;
+        document.getElementById("portB").innerHTML = data;
         }else{
-        document.getElementById("boardB").value ="<option selected>Pilih Kecamatan</option>";
+        document.getElementById("portB").value ="<option selected>Pilih Kecamatan</option>";
 
         }
         }
@@ -307,9 +311,9 @@
         if (ajaxku.readyState==4){
         data=ajaxku.responseText;
         if(data.length>=0){
-        document.getElementById("portB").innerHTML = data;
+        document.getElementById("shelfB").innerHTML = data;
         }else{
-        document.getElementById("portB").value ="<option selected>Pilih Kecamatan</option>";
+        document.getElementById("shelfB").value ="<option selected>Pilih Kecamatan</option>";
 
         }
         }
@@ -509,12 +513,26 @@
                   <div class="x_content">
 
 
+                  
                     <form class="form-horizontal form-label-left" <?php echo form_open_multipart('Link/create_link'); ?> 
                       
 
                         <label for="name">Perangkat <span class="required">*</span>
                         </label>
                       <div class="item form-group">
+                      <div class="col-md-12 col-sm-12 col-xs-12">
+                        <select class="form-control" name="nama_lokasi">
+                          <option>METRO</option>
+                          <option>TERA</option>
+                          <option>TELKOMSEL</option>
+                          <option>ISC</option>
+                          <option>BCA</option>
+                          <option>OTHERS</option>
+                        </select>
+                      </div>
+                      </br> </br> 
+                      </br>
+
                         <div class="col-md-3 col-sm-6 col-xs-12">
                               <input class="form-control" name="host_a" placeholder="Perangkat A">
                           
@@ -536,6 +554,7 @@
                               </input>
                         </div>
                       </div>
+                      <!-- NODE A -->
                         <label >Node A <span class="required">*</span>
                         </label>
                       <div class="item form-group">
@@ -556,7 +575,15 @@
                               </select>
                           
                         </div>
+                              <div class="col-md-3 col-sm-3 col-xs-12">
+                            
+                              <?php echo form_error('board'); ?>
 
+                              <select class="form-control" name="board" id="board" onchange="ajaxboard(this.value)"  <?php echo set_value('board');?>>
+                                <option value="">Board</option>
+                              </select>
+                          
+                        </div>
                         <div class="col-md-2 col-sm-3 col-xs-12">
                             
                              <?php echo form_error('shelf'); ?> 
@@ -566,7 +593,11 @@
                               </select>
                           
                         </div>
-                        <div class="col-md-2 col-sm-3 col-xs-12">
+                   
+                           
+                      </div>
+                      <div class="item form-group">
+                             <div class="col-md-3 col-sm-3 col-xs-12">
                             
                               <?php echo form_error('slot'); ?>
 
@@ -575,19 +606,7 @@
                               </select>
                           
                         </div>
-                           
-                      </div>
-                      <div class="item form-group">
-                  
-                        <div class="col-md-3 col-sm-3 col-xs-12">
-                            
-                              <?php echo form_error('board'); ?>
-
-                              <select class="form-control" name="board" id="board" onchange="ajaxboard(this.value)"  <?php echo set_value('board');?>>
-                                <option value="">Board</option>
-                              </select>
-                          
-                        </div>
+                    
                         <div class="col-md-3 col-sm-3 col-xs-12">
                             
                               <?php echo form_error('port'); ?>
@@ -624,7 +643,15 @@
                               </select>
                           
                         </div>
+                         <div class="col-md-3 col-sm-3 col-xs-12">
+                            
+                              <?php echo form_error('board'); ?>
 
+                              <select class="form-control" name="boardB" id="boardB" onchange="ajaxboardB(this.value)"  <?php echo set_value('board');?>>
+                                <option value="">Board</option>
+                              </select>
+                          
+                        </div>
                         <div class="col-md-2 col-sm-3 col-xs-12">
                             
                              <?php echo form_error('shelf'); ?> 
@@ -634,7 +661,11 @@
                               </select>
                           
                         </div>
-                        <div class="col-md-2 col-sm-3 col-xs-12">
+                  
+                           
+                      </div>
+                      <div class="item form-group">
+                        <div class="col-md-3 col-sm-3 col-xs-12">
                             
                               <?php echo form_error('slot'); ?>
 
@@ -643,19 +674,7 @@
                               </select>
                           
                         </div>
-                           
-                      </div>
-                      <div class="item form-group">
-                  
-                        <div class="col-md-3 col-sm-3 col-xs-12">
-                            
-                              <?php echo form_error('board'); ?>
-
-                              <select class="form-control" name="boardB" id="boardB" onchange="ajaxboardB(this.value)"  <?php echo set_value('board');?>>
-                                <option value="">Board</option>
-                              </select>
-                          
-                        </div>
+            
                         <div class="col-md-3 col-sm-3 col-xs-12">
                             
                               <?php echo form_error('port'); ?>
@@ -696,15 +715,23 @@
                   <div class="x_content"><table id="datatable-buttons" class="table table-hover">
                       <thead>
                         <tr>
-                          <th>No</th>
-                          <th>Link</th>
+                          <th>No</th>                        
                           <th>Node A</th>
                           <th>Node B</th>
                           <th>Client A</th>
                           <th>Client B</th>
                           <th>NMS</th>
                           <th>NE A</th>
+                          <th>Board A</th>
+                          <th>Shelf A</th>
+                          <th>Slot A</th>
+                          <th>Port A</th>
                           <th>NE B</th>
+                          <th>Board B</th>
+                          <th>Shelf B</th>
+                          <th>Slot B</th>
+                          <th>Port B</th>
+                          <th>Aksi</th>
                         </tr>
                       </thead>
 
@@ -713,16 +740,37 @@
             <?php 
             $no = 0;
             foreach($link_statis as $link){
+
               ?>
                         <tr>
-                          <td>(<?php echo $link->host_a?>) - (<?php echo $link->host_b?>)</td>
+
+                          <td><?php 
+                           if($link->host_a=="-" || $link->host_a==""){
+                              $no=$no+0;
+                            }else{
+                                $no++;
+                                echo $no; }
+                                 ?></td>
+                        
                           <td><?php echo $link->host_a?></td>
                           <td><?php echo $link->host_b?></td>
                           <td><?php echo $link->fa_a?></td>
                           <td><?php echo $link->fa_b?></td>
                           <td><?php echo $link->nms?></td>
                           <td><?php echo $link->ne_a?></td>
+                          <td><?php echo $link->board_a?></td>
+                          <td><?php echo $link->shelf_a?></td>
+                          <td><?php echo $link->slot_a?></td>
+                          <td><?php echo $link->port_a?></td>
+
                           <td><?php echo $link->ne_b?></td>
+                          <td><?php echo $link->board_b?></td>
+                          <td><?php echo $link->shelf_b?></td>
+                          <td><?php echo $link->slot_b?></td>
+                          <td><?php echo $link->port_b?></td>
+                          <td> <a href="" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit <?php echo $link->id_link?></a>
+                          <a href="<?php echo site_url('Link/delete_link/'.$link->id_link);?>" class="btn btn-danger btn-xs" onclick="return doconfirm();"><i class="fa fa-trash-o"></i> Delete </a>
+                          </td>
                         </tr>
                 <?php }?>  
                       </tbody>
