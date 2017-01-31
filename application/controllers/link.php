@@ -9,8 +9,6 @@ class Link extends CI_Controller {
         $this->load->model('tn_model');
 		$this->load->helper(array('url','form'));
         $this->load->library('csvimport');
-
-		
 		
 	}
 

@@ -20,7 +20,7 @@ class tn_model extends CI_Model {
 			return $this->db->get();
 		}
 
-			function get_link_statis(){
+		function get_link_statis(){
 			$this->db->select('*');
 			$this->db->from('link_statis');
 			return $this->db->get();
@@ -79,14 +79,6 @@ class tn_model extends CI_Model {
 		return $this->db->get('port')->num_rows();
 	}
 	
-	// function pagination REPORT
-	function data2($number,$offset){
-		return $query = $this->db->get('link_statis',$number,$offset)->result();		
-	}
-	function jumlah_data2(){
-		return $this->db->get('link_statis')->num_rows();
-	}
-
     //update port
     function update_port($id_port, $data){
 			$this->db->where('id_port', $id_port);
@@ -106,28 +98,6 @@ class tn_model extends CI_Model {
 	//function insert port
 	function insert_port($data){
 			$this->db->insert('port', $data);
-	}
-
-	//FUNGSI DOWNLOAD REPORT
-	function export_csv($data2){
-        $this->db->export('link_statis', $data2);
-    }
-
-	//FUNGSI SEARCHING REPORT
-	function tampil(){
-		$query = $this->db->get('link_statis');
-		return $query->result(); 
-	}
-	function caridata(){
-		$c = $this->input->POST('cari');
-		$this->db->like('host_a', $c);
-		/*$this->db->or_like('nama_lokasi', $c);
-		$this->db->or_like('nama_ne', $c);
-		$this->db->or_like('frekuensi', $c);
-		$this->db->or_like('board', $c);
-		$this->db->or_like('frekuensi', $c);*/
-		$query = $this->db->get('link_statis');
-		return $query->result(); 
 	}
 }
 
