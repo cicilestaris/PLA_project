@@ -166,7 +166,7 @@ class Home extends CI_Controller {
                 $csv_array = $this->csvimport->get_array($file_path);
                 foreach ($csv_array as $row) {
                     $data = array(
-                        'id_port'=>$row['id_port'],
+                        'id_port'=>'NULL',
                         'nama_nms'=>$row['nama_nms'],
                         'nama_lokasi'=>$row['nama_lokasi'],
                         'id_merk'=>$row['id_merk'],
@@ -184,15 +184,23 @@ class Home extends CI_Controller {
                     $this->tn_model->insert_csv($data);
                 }
                 $this->session->set_flashdata('success', 'Csv Data Imported Succesfully');
+                $this->load->database();
+                $jumlah_data = $this->tn_model->jumlah_data();
+                $this->load->library('pagination');
+                $config['base_url'] = base_url().'index.php/home/table_nms';
+                $config['total_rows'] = $jumlah_data;
+                $config['per_page'] = 100;
+                $from = $this->uri->segment(3);
+                $this->pagination->initialize($config);
 
-               $data['port'] = $this->tn_model->get_port()->result();
-				$data['merk'] = $this->tn_model->get_merk_by_id($data['port'][0]->id_merk)->result();
-				$this->load->view('admin/nms/tables_nms', $data);
-	
-            } else 
-                $data['error'] = "Error occured";
+                $data['port'] = $this->tn_model->data($config['per_page'],$from);
+                $data['merk'] = $this->tn_model->get_merk_by_id($data['port'][0]->id_merk)->result();
                 $this->load->view('admin/nms/tables_nms', $data);
-            }
+        	
+                    } else 
+                        $data['error'] = "Error occured";
+                        $this->load->view('admin/nms/tables_nms', $data);
+                    }
  
         } 
 

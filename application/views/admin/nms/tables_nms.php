@@ -230,7 +230,7 @@
                           <th>Slot</th>
                           <th>Port</th>
                           <th>Board</th>
-                          <th>Kapasitas</th>
+                    <!--       <th>Kapasitas</th> -->
                           <th>Frekuensi</th>
                           <th>User</th>
                         <!--   <th>Deskripsi</th> -->
@@ -270,7 +270,7 @@
                           <td><?php echo $portt->slot?></td>
                           <td><?php echo $portt->port?></td>
                           <td><?php echo $portt->board?></td>
-                          <td><?php echo $kap?></td>
+          <!--                 <td><?php echo $kap?></td> -->
                           <td><?php echo $portt->frekuensi?></td>
                           <td><?php echo $portt->user?></td>
                          <!--  <td><?php echo wordwrap($portt->deskripsi,15,"<br>\n")?></td> -->
