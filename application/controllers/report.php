@@ -10,7 +10,7 @@ class Report extends CI_Controller {
 	}
 	
 		//REPORT
-		public function table_report(){
+		public function index(){
 			$this->load->database();
 			$jumlah_data = $this->report_model->jumlah_data();
 			$this->load->library('pagination');
