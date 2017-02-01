@@ -59,8 +59,8 @@
               <div class="menu_section">
                 <ul class="nav side-menu">
                   <li><a href="<?php echo site_url('Home/table_nms');?>"><i class="fa fa-table"></i> NMS </a>
-                  <li><a href="<?php echo site_url('Home/table_perangkat');?>"><i class="fa fa-table"></i> Transport Users </a></li>
-                  <li><a href="<?php echo site_url('Report/table_report');?>"><i class="fa fa-table"></i> Report </a></li>
+                  <li><a href="<?php echo site_url('Link');?>"><i class="fa fa-table"></i> Transport Users </a></li>
+                  <li><a href="<?php echo site_url('Report');?>"><i class="fa fa-table"></i> Report </a></li>
                   </li>
                 </ul>
               </div>
@@ -198,10 +198,6 @@
 			<div class="title_right">
                 <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
                   <div class="input-group">
-                    <form action="<?php print site_url();?>/report/cari" method=POST>
-					<input type=text name=cari>
-					<button class="btn btn-default" type="submit">Search</button>
-					</form>
                   </div>
                 </div>
 			</div>
@@ -264,6 +260,13 @@
                     <td>
                        <a href="<?php echo site_url('Report/exportcsv');?>"><button type="submit" class="btn btn-primary">Download Report</button></a>
                     </td>
+					<td>
+					<form action="<?php print site_url();?>/report/cari" method=POST>
+					<input type=text name=cari>
+					<button class="btn btn-default" type="submit">Search</button>
+					</form>
+					<a href="<?php echo site_url('Report/exportdatacari');?>"><button type="submit" class="btn btn-primary">Download Report sesuai pencarian</button></a>
+					</td>
                 </div>
               </div>
         <!-- /page content -->

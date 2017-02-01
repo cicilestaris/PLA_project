@@ -10,7 +10,7 @@ class Report extends CI_Controller {
 	}
 	
 		//REPORT
-		public function table_report(){
+		public function index(){
 			$this->load->database();
 			$jumlah_data = $this->report_model->jumlah_data();
 			$this->load->library('pagination');
@@ -61,5 +61,22 @@ class Report extends CI_Controller {
 				$data2['link_statis'] = $this->report_model->data($config['per_page'],$from);
 				$this->load->view('admin/report/tables_report',$data); 
 			}
+		}
+		
+		//DOWNLOAD REPORT BERDASARKAN PENCARIAN
+		public function exportdatacari() {
+			$this->load->dbutil();
+			$this->load->helper('file');
+			$this->load->helper('download');
+			$delimiter = ",";
+			$newline = "\r\n";
+			//$a=$this->report_model->caridata();
+			
+			$filename = "datektransport.xls";
+			$query = "SELECT * FROM link_statis";
+
+			$result = $this->db->query($query);
+			$data = $this->dbutil->csv_from_result($result, $delimiter, $newline);
+			force_download($filename, $data);
 		}
 }
