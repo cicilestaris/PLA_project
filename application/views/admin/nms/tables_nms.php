@@ -211,12 +211,19 @@
           <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Data Teknik</h2>
+                    <h2>Data NMS</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
                     </ul>
                     <div class="clearfix"></div>
-                  </div>
+                      </div>
+                    <td>
+                       <a href="<?php echo site_url('Home/insert_single_nms');?>"><button type="submit" class="btn btn-primary">Insert Single Data</button></a>
+                    </td>
+                     <td>
+                       <a href="<?php echo site_url('Home/insert_double_nms');?>"><button type="submit" class="btn btn-success">Insert Multiple Data</button></a>
+                      </td>
+             
                   <div class="x_content"><table id="datatable-buttons" class="table table-hover">
                       <thead>
                         <tr>
@@ -323,14 +330,7 @@
                     </ul
 					<br />
 					<br />
-                  </div>
-                    <td>
-                       <a href="<?php echo site_url('Home/insert_single_nms');?>"><button type="submit" class="btn btn-primary">Insert Single Data</button></a>
-                    </td>
-                     <td>
-                       <a href="<?php echo site_url('Home/insert_double_nms');?>"><button type="submit" class="btn btn-success">Insert Multiple Data</button></a>
-                      </td>
-                </div>
+                 </div>
               </div>
         <!-- /page content -->
      
