@@ -30,6 +30,15 @@ class link_model extends CI_Model {
 			$this->db->insert('link_statis', $data);
 		}
 
+		// function insert_jalur($data){
+		// 	$this->db->insert('jumlah_jalur');
+		// }
+		// function get_jalur(){
+		// 	$this->db->select('*');
+		// 	$this->db->from('jumlah_jalur');
+		// 	return $this->db->affected_rows();
+		// }
+
 		function delete_link($id_link){
 			$this->db->where('id_link', $id_link);
 			$this->db->delete('link_statis');

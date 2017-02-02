@@ -29,10 +29,10 @@ class report_model extends CI_Model {
 		}
 
 		//FUNGSI DOWNLOAD REPORT
-		function export_csv($data){
+		function export_data($data){
 			$this->db->export('link_statis', $data);
 		}
-
+		
 		//FUNGSI SEARCHING REPORT
 		function tampil(){
 			$query = $this->db->get('link_statis');
@@ -41,13 +41,14 @@ class report_model extends CI_Model {
 		function caridata(){
 			$c = $this->input->POST('cari');
 			$this->db->like('host_a', $c);
-			/*$this->db->or_like('host_b', $c);
-			$this->db->or_like('nama_ne', $c);
-			$this->db->or_like('frekuensi', $c);
-			$this->db->or_like('board', $c);
-			$this->db->or_like('frekuensi', $c);*/
+			$this->db->or_like('host_b', $c);
+			$this->db->or_like('fa_a', $c);
+			$this->db->or_like('fa_b', $c);
+			$this->db->or_like('nms', $c);
+			$this->db->or_like('ne_a', $c);
+			$this->db->or_like('ne_b', $c);
 			$query = $this->db->get('link_statis');
-			return $query->result(); 
+			return $query->result(); 	
 		}
 }
 

@@ -14,6 +14,13 @@ class tn_model extends CI_Model {
 			return $this->db->get();
 		}
 
+		function get_nms(){
+			$this->db->select('nama_nms');
+			$this->db->from('port');
+			$this->db->group_by('nama_nms');
+			return $this->db->get();
+		}
+
 			function get_merk(){
 			$this->db->select('*');
 			$this->db->from('merk');

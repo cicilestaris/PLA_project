@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+
+
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
@@ -30,296 +32,23 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js" type="text/javascript"></script>
 
 
-         <script type="text/javascript">
-
-        var string;
-        var lok;
-        var sh;
-        var board;
-
-          var ajaxku;
-      function ajaxlokasi(id){
-        lok = id;
-          ajaxku = buatajax();
-          var url="../ajax/select_lokasi.php";
-          url=url+"?ne="+id;
-          url=url+"&sid="+Math.random();
-          ajaxku.onreadystatechange=stateChanged;
-          ajaxku.open("GET",url,true);
-          ajaxku.send(null);
-      }
-
-
-            var ajaxku;
-      function ajaxne(str){
-          ajaxku = buatajax();
-          var url="../ajax/select_lokasi.php";
-          url=url+"?board="+str;
-          console.log(url);
-        string = str;
-          ajaxku.onreadystatechange=stateChangedNe;
-          ajaxku.open("GET",url,true);
-          ajaxku.send(null);
-      }
-
-            var ajaxku;
-      function ajaxboard(str){
-         // console.log(string);
-         board = str;
-          ajaxku = buatajax();
-          var url="../ajax/select_lokasi.php";
-          url=url+"?shelf="+string;
-          console.log(url);
-          ajaxku.onreadystatechange=stateChangedBoard;
-          ajaxku.open("GET",url,true);
-          ajaxku.send(null);
-      }
-                 var ajaxku;
-      function ajaxshelf(str){
-          console.log(string);
-          ajaxku = buatajax();
-          var url="../ajax/select_lokasi.php";
-          sh = str;
-          url=url+"?slot="+str+"&sh="+string+"&n="+lok;
-          console.log(url);
-          ajaxku.onreadystatechange=stateChangedShelf;
-          ajaxku.open("GET",url,true);
-          ajaxku.send(null);
-      }
-
-
-      var ajaxku;
-      function ajaxslot(str){
-          console.log(string);
-          ajaxku = buatajax();
-          var url="../ajax/select_lokasi.php";
-          url=url+"?port="+board;
-          console.log(url);
-          ajaxku.onreadystatechange=stateChangedSlot;
-          ajaxku.open("GET",url,true);
-          ajaxku.send(null);
-      }
-
-
-
-     function buatajax(){
-        if (window.XMLHttpRequest){
-        return new XMLHttpRequest();
-        }
-        if (window.ActiveXObject){
-        return new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        return null;
+    <script type="text/javascript">
+            function ajaxjalur(str) {
+    if (str.length == 0) { 
+        document.getElementById("tambahdd").innerHTML = "";
+        return;
+    } else {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("tambahdd").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET", "../../ajax/coba.php?q=" + str, true);
+        xmlhttp.send();
     }
-    function stateChanged(){
-        var data;
-        if (ajaxku.readyState==4){
-        data=ajaxku.responseText;
-        if(data.length>=0){
-        document.getElementById("berubah").innerHTML = data;
-        }else{
-        document.getElementById("berubah").value = "<option selected>Pilih Kota/Kab</option>";
-        }
-        }
-    }
-
-      function stateChangedNe(){
-        var data;
-        if (ajaxku.readyState==4){
-        data=ajaxku.responseText;
-        if(data.length>=0){
-        document.getElementById("board").innerHTML = data;
-        }else{
-        document.getElementById("board").value ="<option selected>Pilih Kecamatan</option>";
-
-        }
-        }
-    }
-
-        function stateChangedShelf(){
-        var data;
-        if (ajaxku.readyState==4){
-        data=ajaxku.responseText;
-        if(data.length>=0){
-        document.getElementById("slot").innerHTML = data;
-        }else{
-        document.getElementById("slot").value ="<option selected>Pilih Kecamatan</option>";
-
-        }
-        }
-    }
-
-    function stateChangedSlot(){
-        var data;
-        if (ajaxku.readyState==4){
-        data=ajaxku.responseText;
-        if(data.length>=0){
-        document.getElementById("port").innerHTML = data;
-        }else{
-        document.getElementById("port").value ="<option selected>Pilih Kecamatan</option>";
-
-        }
-        }
-    }
-
-    function stateChangedBoard(){
-        var data;
-        if (ajaxku.readyState==4){
-        data=ajaxku.responseText;
-        if(data.length>=0){
-        document.getElementById("shelf").innerHTML = data;
-        }else{
-        document.getElementById("shelf").value ="<option selected>Pilih Kecamatan</option>";
-
-        }
-        }
-    }
-    </script>
-  <script type="text/javascript">
-
-       var string;
-        var lok;
-        var sh;
-        var board;
-
-          var ajaxku;
-      function ajaxlokasiB(id){
-        lok = id;
-          ajaxku = buatajax();
-          var url="../ajax/select_lokasi.php";
-          url=url+"?ne="+id;
-          url=url+"&sid="+Math.random();
-          ajaxku.onreadystatechange=stateChangedB;
-          ajaxku.open("GET",url,true);
-          ajaxku.send(null);
-      }
-
-
-            var ajaxku;
-      function ajaxneB(str){
-          ajaxku = buatajax();
-          var url="../ajax/select_lokasi.php";
-          url=url+"?board="+str;
-          console.log(url);
-        string = str;
-          ajaxku.onreadystatechange=stateChangedNeB;
-          ajaxku.open("GET",url,true);
-          ajaxku.send(null);
-      }
-
-            var ajaxku;
-      function ajaxboardB(str){
-         // console.log(string);
-         board = str;
-          ajaxku = buatajax();
-          var url="../ajax/select_lokasi.php";
-          url=url+"?shelf="+string;
-          console.log(url);
-          ajaxku.onreadystatechange=stateChangedBoardB;
-          ajaxku.open("GET",url,true);
-          ajaxku.send(null);
-      }
-                 var ajaxku;
-      function ajaxshelfB(str){
-          console.log(string);
-          ajaxku = buatajax();
-          var url="../ajax/select_lokasi.php";
-          sh = str;
-          url=url+"?slot="+str+"&sh="+string+"&n="+lok;
-          console.log(url);
-          ajaxku.onreadystatechange=stateChangedShelfB;
-          ajaxku.open("GET",url,true);
-          ajaxku.send(null);
-      }
-
-
-      var ajaxku;
-      function ajaxslotB(str){
-          console.log(string);
-          ajaxku = buatajax();
-          var url="../ajax/select_lokasi.php";
-          url=url+"?port="+board;
-          console.log(url);
-          ajaxku.onreadystatechange=stateChangedSlotB;
-          ajaxku.open("GET",url,true);
-          ajaxku.send(null);
-      }
-
-
-     function buatajax(){
-        if (window.XMLHttpRequest){
-        return new XMLHttpRequest();
-        }
-        if (window.ActiveXObject){
-        return new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        return null;
-    }
-       function stateChangedB(){
-        var data;
-        if (ajaxku.readyState==4){
-        data=ajaxku.responseText;
-        if(data.length>=0){
-        document.getElementById("berubahB").innerHTML = data;
-        }else{
-        document.getElementById("berubahB").value = "<option selected>Pilih Kota/Kab</option>";
-        }
-        }
-    }
-
-      function stateChangedNeB(){
-        var data;
-        if (ajaxku.readyState==4){
-        data=ajaxku.responseText;
-        if(data.length>=0){
-        document.getElementById("boardB").innerHTML = data;
-        }else{
-        document.getElementById("boardB").value ="<option selected>Pilih Kecamatan</option>";
-
-        }
-        }
-    }
-
-        function stateChangedShelfB(){
-        var data;
-        if (ajaxku.readyState==4){
-        data=ajaxku.responseText;
-        if(data.length>=0){
-        document.getElementById("slotB").innerHTML = data;
-        }else{
-        document.getElementById("slotB").value ="<option selected>Pilih Kecamatan</option>";
-
-        }
-        }
-    }
-
-    function stateChangedSlotB(){
-        var data;
-        if (ajaxku.readyState==4){
-        data=ajaxku.responseText;
-        if(data.length>=0){
-        document.getElementById("portB").innerHTML = data;
-        }else{
-        document.getElementById("portB").value ="<option selected>Pilih Kecamatan</option>";
-
-        }
-        }
-    }
-
-    function stateChangedBoardB(){
-        var data;
-        if (ajaxku.readyState==4){
-        data=ajaxku.responseText;
-        if(data.length>=0){
-        document.getElementById("shelfB").innerHTML = data;
-        }else{
-        document.getElementById("shelfB").value ="<option selected>Pilih Kecamatan</option>";
-
-        }
-        }
-    }
-    </script>
-            
+}
+</script>
   </head>
 
   <body class="nav-md">
@@ -354,7 +83,7 @@
                 <ul class="nav side-menu">
                 <li><a href="<?php echo site_url('Home/table_nms');?>"><i class="fa fa-table"></i> NMS </a>
                 <li><a href="<?php echo site_url('link');?>"><i class="fa fa-table"></i> Transport Users </a></li>
-                <li><a href="<?php echo site_url('Report/table_report');?>"><i class="fa fa-table"></i> Report </a></li>
+                <li><a href="<?php echo site_url('Report');?>"><i class="fa fa-table"></i> Report </a></li>
         </li>
                 </ul>
               </div>
@@ -514,24 +243,294 @@
 
 
                   
-              <form class="form-horizontal form-label-left" <?php echo form_open_multipart('Link/insert_jalur'); ?> 
+                    <form class="form-horizontal form-label-left" <?php echo form_open_multipart('Link/create_link'); ?> 
                       
 
-                        <label for="name">Masukan Jalur <span class="required">*</span>
+                        <label for="name">Perangkat <span class="required">*</span>
                         </label>
                       <div class="item form-group">
-              
+                      <div class="col-md-12 col-sm-12 col-xs-12">
+                        <select class="form-control" name="nama_lokasi">
+                          <option>METRO</option>
+                          <option>TERA</option>
+                          <option>TELKOMSEL</option>
+                          <option>ISC</option>
+                          <option>BCA</option>
+                          <option>OTHERS</option>
+                        </select>
+                      </div>
+                      </br> </br> 
+                      </br>
 
                         <div class="col-md-3 col-sm-6 col-xs-12">
-                              <input class="form-control" name="jalur" placeholder="Perangkat A">
+                              <input class="form-control" name="host_a" placeholder="Perangkat A">
+                          
                               </input>
                         </div>
-                   
-             
+                          <div class="col-md-3 col-sm-6 col-xs-12">
+                              <input class="form-control" name="host_b" placeholder="Perangkat B">
+                          
+                              </input>
+                        </div>
+                              <div class="col-md-3 col-sm-6 col-xs-12">
+                              <input class="form-control" name="fa_a" placeholder="Interface A">
+                          
+                              </input>
+                        </div>
+                          <div class="col-md-3 col-sm-6 col-xs-12">
+                              <input class="form-control" name="fa_b" placeholder="Interface B">
+                          
+                              </input>
+                        </div>
                       </div>
-                   </form>
-                   </div>
-                   </div>
+
+                      
+                          <label for="name">NMS <span class="required">*</span>
+                        </label>
+                      <div class="item form-group">
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <select class="form-control" name="nama_nms">
+                           <?php foreach($port as $p){?>
+                                <option value="<?php echo $p->nama_nms;?>"><?php echo $p->nama_nms?></option>
+                                <?php } ?>
+                        </select>
+                      </div>
+                      </div>
+                   
+                      <!-- NODE A -->
+                      <?php 
+                      $a=1;
+                      for ($i=0; $i < $jumlah_jalur; $i++) { 
+                        
+
+                      ?>
+                               <script type="text/javascript">
+
+
+                      var string;
+                      var lok;
+                      var sh;
+                      var board;
+
+                        var ajaxku;
+                    function ajaxlokasi<?php echo $a;?>(id){
+                      lok = id;
+                        ajaxku = buatajax();
+                        var url="../../ajax/select_lokasi.php";
+                        url=url+"?ne="+id;
+                        url=url+"&sid="+Math.random();
+                        ajaxku.onreadystatechange=stateChanged<?php echo $a;?>;
+                        ajaxku.open("GET",url,true);
+                        ajaxku.send(null);
+                    }
+
+
+                          var ajaxku;
+                    function ajaxne<?php echo $a;?>(str){
+                        ajaxku = buatajax();
+                        var url="../../ajax/select_lokasi.php";
+                        url=url+"?board="+str;
+                        console.log(url);
+                      string = str;
+                        ajaxku.onreadystatechange=stateChangedNe<?php echo $a;?>;
+                        ajaxku.open("GET",url,true);
+                        ajaxku.send(null);
+                    }
+
+                          var ajaxku;
+                    function ajaxboard<?php echo $a;?>(str){
+                       // console.log(string);
+                       board = str;
+                        ajaxku = buatajax();
+                        var url="../../ajax/select_lokasi.php";
+                        url=url+"?shelf="+string;
+                        console.log(url);
+                        ajaxku.onreadystatechange=stateChangedBoard<?php echo $a;?>;
+                        ajaxku.open("GET",url,true);
+                        ajaxku.send(null);
+                    }
+                               var ajaxku;
+                    function ajaxshelf<?php echo $a;?>(str){
+                        console.log(string);
+                        ajaxku = buatajax();
+                        var url="../../ajax/select_lokasi.php";
+                        sh = str;
+                        url=url+"?slot="+str+"&sh="+string+"&n="+lok;
+                        console.log(url);
+                        ajaxku.onreadystatechange=stateChangedShelf<?php echo $a;?>;
+                        ajaxku.open("GET",url,true);
+                        ajaxku.send(null);
+                    }
+
+
+                    var ajaxku;
+                    function ajaxslot<?php echo $a;?>(str){
+                        console.log(string);
+                        ajaxku = buatajax();
+                        var url="../../ajax/select_lokasi.php";
+                        url=url+"?port="+board;
+                        console.log(url);
+                        ajaxku.onreadystatechange=stateChangedSlot<?php echo $a;?>;
+                        ajaxku.open("GET",url,true);
+                        ajaxku.send(null);
+                    }
+
+
+
+                   function buatajax(){
+                      if (window.XMLHttpRequest){
+                      return new XMLHttpRequest();
+                      }
+                      if (window.ActiveXObject){
+                      return new ActiveXObject("Microsoft.XMLHTTP");
+                      }
+                      return null;
+                  }
+                  function stateChanged<?php echo $a;?>(){
+                      var data;
+                      if (ajaxku.readyState==4){
+                      data=ajaxku.responseText;
+                      if(data.length>=0){
+                      document.getElementById("berubah<?php echo $a;?>").innerHTML = data;
+                      }else{
+                      document.getElementById("berubah<?php echo $a;?>").value = "<option selected>Pilih Kota/Kab</option>";
+                      }
+                      }
+                  }
+
+                    function stateChangedNe<?php echo $a;?>(){
+                      var data;
+                      if (ajaxku.readyState==4){
+                      data=ajaxku.responseText;
+                      if(data.length>=0){
+                      document.getElementById("board<?php echo $a;?>").innerHTML = data;
+                      }else{
+                      document.getElementById("board<?php echo $a;?>").value ="<option selected>Pilih Kecamatan</option>";
+
+                      }
+                      }
+                  }
+
+                      function stateChangedShelf<?php echo $a;?>(){
+                      var data;
+                      if (ajaxku.readyState==4){
+                      data=ajaxku.responseText;
+                      if(data.length>=0){
+                      document.getElementById("slot<?php echo $a;?>").innerHTML = data;
+                      }else{
+                      document.getElementById("slot<?php echo $a;?>").value ="<option selected>Pilih Kecamatan</option>";
+
+                      }
+                      }
+                  }
+
+                  function stateChangedSlot<?php echo $a;?>(){
+                      var data;
+                      if (ajaxku.readyState==4){
+                      data=ajaxku.responseText;
+                      if(data.length>=0){
+                      document.getElementById("port<?php echo $a;?>").innerHTML = data;
+                      }else{
+                      document.getElementById("port<?php echo $a;?>").value ="<option selected>Pilih Kecamatan</option>";
+
+                      }
+                      }
+                  }
+
+                  function stateChangedBoard<?php echo $a;?>(){
+                      var data;
+                      if (ajaxku.readyState==4){
+                      data=ajaxku.responseText;
+                      if(data.length>=0){
+                      document.getElementById("shelf<?php echo $a;?>").innerHTML = data;
+                      }else{
+                      document.getElementById("shelf<?php echo $a;?>").value ="<option selected>Pilih Kecamatan</option>";
+
+                      }
+                      }
+                  }
+                  </script>
+                        <label >Node <?php echo $a;?> <span class="required">*</span>
+                        </label>
+                      <div class="item form-group">
+                        <div class="col-md-3 col-sm-3 col-xs-12" id="nama_lokasi">
+                        <select class="form-control" name="nama_lokasi<?php echo $a;?>" id="nama_lokasi<?php echo $a;?>" onchange="ajaxlokasi<?php echo $a;?>(this.value)">
+                                 <option value="">Lokasi</option>
+                                <?php foreach($lokasi as $location){?>
+                                <option value="<?php echo $location->id_lokasi;?>"><?php echo $location->nama_lokasi?></option>
+                                <?php } ?>
+                        </select>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            
+                              <?php echo form_error('ne'); ?>
+
+                              <select class="form-control" name="ne<?php echo $a;?>" id="berubah<?php echo $a;?>" onchange="ajaxne<?php echo $a;?>(this.value)" >
+                                <option value="">NE</option>
+                              </select>
+                          
+                        </div>
+                              <div class="col-md-3 col-sm-3 col-xs-12">
+                            
+                              <?php echo form_error('board'); ?>
+
+                              <select class="form-control" name="board<?php echo $a;?>" id="board<?php echo $a;?>" onchange="ajaxboard<?php echo $a;?>(this.value)"  <?php echo set_value('board');?>>
+                                <option value="">Board</option>
+                              </select>
+                          
+                        </div>
+                        <div class="col-md-2 col-sm-3 col-xs-12">
+                            
+                             <?php echo form_error('shelf'); ?> 
+
+                              <select class="form-control" name="shelf<?php echo $a;?>" id="shelf<?php echo $a;?>"  onchange="ajaxshelf<?php echo $a;?>(this.value)" <?php echo set_value('shelf');?>>
+                                <option value="">Shelf</option>
+                              </select>
+                          
+                        </div>
+                   
+                           
+                      </div>
+                      <div class="item form-group">
+                             <div class="col-md-3 col-sm-3 col-xs-12">
+                            
+                              <?php echo form_error('slot'); ?>
+
+                              <select class="form-control" name="slot<?php echo $a;?>" id="slot<?php echo $a;?>"  onchange="ajaxslot<?php echo $a;?>(this.value)"<?php echo set_value('slot');?>>
+                                <option value="">Slot</option>
+                              </select>
+                          
+                        </div>
+                    
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            
+                              <?php echo form_error('port'); ?>
+
+                              <select class="form-control" name="port<?php echo $a;?>" id="port<?php echo $a;?>" <?php echo set_value('board');?> onchange="ajaxtampil<?php echo $a;?>(this.value)">
+                                <option value="">Port</option>
+                              </select>
+                          
+                        </div>
+                        </div>
+                        <?php $a++;} ?>
+                 
+                      <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                         <input name="id_port" type="text" hidden/>
+                         <div class="form-group" style="margin-top:11px; margin-left: -100px; position: absolute;">
+                          <button id="send" type="submit" class="btn btn-success">Submit</button>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+
+                     <td>
+                       <a href="<?php echo site_url('link/insert_double_perangkat');?>"><button type="submit" class="btn btn-primary">Insert Multiple Data</button></a>
+                      </td>
+                  
+                </div>
+              </div>
               </div>
 
                   <div class="col-md-12 col-sm-12 col-xs-12">
@@ -544,8 +543,7 @@
                     </ul>
                     <div class="clearfix"></div>
                   </div>
-                  <div class="x_content">
-                  <table id="datatable-buttons" class="table table-hover">
+                  <div class="x_content"><table id="datatable-buttons" class="table table-hover">
                       <thead>
                         <tr>
                           <th>No</th>                        
@@ -608,7 +606,6 @@
                 <?php }?>  
                       </tbody>
                     </table>
-                    </div>
                         <br />
                
           <br />
