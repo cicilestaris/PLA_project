@@ -58,8 +58,6 @@
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <ul class="nav side-menu">
-                  <li><a href="<?php echo site_url('Home/table_nms');?>"><i class="fa fa-table"></i> NMS </a>
-                  <li><a href="<?php echo site_url('Link');?>"><i class="fa fa-table"></i> Transport Users </a></li>
                   <li><a href="<?php echo site_url('Report');?>"><i class="fa fa-table"></i> Report </a></li>
                   </li>
                 </ul>
@@ -199,8 +197,8 @@
                 <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
                   <div class="input-group">
 					<form action="<?php print site_url();?>/report/cari" method=POST>
-					<input type=text name=cari onchange="find()">				
-					<a href="<?php echo site_url('report');?>"><button type="submit" class="btn btn-primary">search</button></a>
+					<input type=text name=cari>				
+					<a href="<?php echo base_url('Download/download_report');?>"><button type="submit" class="btn btn-primary">search</button></a>
 					</form>	
 				  </div>
                 </div>
@@ -278,18 +276,10 @@
 						<?php echo $this->pagination->create_links(); ?>
 					<br />
 					<br />
+					
                   </div>
-				 
-					<?php 	
-					$x="";
-					if(isset($_SESSION['x'])){
-						//echo $_SESSION['x'];
-						$x = $_SESSION['x'];
-					}
-					?>
                     <td>
-                       <a href="<?php echo site_url('Report/exportcsv');?>"><button type="submit" class="btn btn-primary">Download Report (.csv)</button></a>
-					   <a href="<?php echo base_url('Download/download_excel.php?x=').$x;?>"><button type="submit" class="btn btn-primary">Download Report (.xls)</button></a>
+					   <a href="<?php echo base_url('download2/download_excel_cari.php');?>"><button type="submit" class="btn btn-primary">Download Report berdasarkan pencarian </button></a>
                     </td>
                 </div>
               </div>

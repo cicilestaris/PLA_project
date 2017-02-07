@@ -13,24 +13,19 @@ class report_model extends CI_Model {
 			return $this->db->get();
 		}
 
-		function get_link_by_id($id){
+		/*function get_link_by_host($host_a){
 			$this->db->select('*');
 			$this->db->from('link_statis');
-			$this->db->where('id_link',$id);
+			$this->db->where('host_a',$host_a);
 			return $this->db->get();
-		}
+		}*/
 	
-		// FUNGSI PAGINATION REPORT
+		//FUNGSI PAGINATION REPORT
 		function data($number,$offset){
 			return $query = $this->db->get('link_statis',$number,$offset)->result();		
 		}
 		function jumlah_data(){
 			return $this->db->get('link_statis')->num_rows();
-		}
-
-		//FUNGSI DOWNLOAD REPORT
-		function export_data($data){
-			$this->db->export('link_statis', $data);
 		}
 		
 		//FUNGSI SEARCHING REPORT
@@ -41,15 +36,21 @@ class report_model extends CI_Model {
 		function caridata(){
 			$c = $this->input->POST('cari');
 			$this->db->like('host_a', $c);
-			$this->db->or_like('host_b', $c);
+			/*$this->db->or_like('host_b', $c);
 			$this->db->or_like('fa_a', $c);
 			$this->db->or_like('fa_b', $c);
 			$this->db->or_like('nms', $c);
 			$this->db->or_like('ne_a', $c);
-			$this->db->or_like('ne_b', $c);
+			$this->db->or_like('ne_b', $c);*/
 			$query = $this->db->get('link_statis');
 			return $query->result(); 	
 		}
+		
+		/*function report($host_a, $data){
+			$this->db->where('host_a', $host_a);
+			$this->db->select('link_statis', $data);
+		}*/
+		
 }
 
 /* End of file employee.php */
