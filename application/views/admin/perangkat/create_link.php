@@ -244,7 +244,7 @@
 
                   
                     <form class="form-horizontal form-label-left" <?php echo form_open_multipart('Link/create_link'); ?> 
-                      
+                       <input name="jalur" type="text" value="<?php echo $jumlah_jalur; ?>" hidden/>
 
                         <label for="name">Perangkat <span class="required">*</span>
                         </label>
@@ -263,12 +263,12 @@
                       </br>
 
                         <div class="col-md-3 col-sm-6 col-xs-12">
-                              <input class="form-control" name="host_a" placeholder="Perangkat A">
+                              <input class="form-control" name="host_a" placeholder="Node A">
                           
                               </input>
                         </div>
                           <div class="col-md-3 col-sm-6 col-xs-12">
-                              <input class="form-control" name="host_b" placeholder="Perangkat B">
+                              <input class="form-control" name="host_b" placeholder="Node B">
                           
                               </input>
                         </div>
@@ -285,17 +285,7 @@
                       </div>
 
                       
-                          <label for="name">NMS <span class="required">*</span>
-                        </label>
-                      <div class="item form-group">
-                      <div class="col-md-6 col-sm-12 col-xs-12">
-                        <select class="form-control" name="nama_nms">
-                           <?php foreach($port as $p){?>
-                                <option value="<?php echo $p->nama_nms;?>"><?php echo $p->nama_nms?></option>
-                                <?php } ?>
-                        </select>
-                      </div>
-                      </div>
+                   
                    
                       <!-- NODE A -->
                       <?php 
@@ -304,21 +294,34 @@
                         
 
                       ?>
-                               <script type="text/javascript">
+             <script type="text/javascript">
 
 
                       var string;
                       var lok;
                       var sh;
                       var board;
+                      var nms;
+                        var ajaxku;
+                    function ajaxnms<?php echo $a;?>(str){
+                        ajaxku = buatajax();
+                        var url="../../ajax/select_lokasi.php";
+                        url=url+"?nms="+str;
+                        nms = str;
+                        console.log(url);
+                        ajaxku.onreadystatechange=stateChangedNms<?php echo $a;?>;
+                        ajaxku.open("GET",url,true);
+                        ajaxku.send(null);
+                    }
 
                         var ajaxku;
                     function ajaxlokasi<?php echo $a;?>(id){
-                      lok = id;
+                      lok= $("#nama_lokasi"+id).val();
                         ajaxku = buatajax();
                         var url="../../ajax/select_lokasi.php";
-                        url=url+"?ne="+id;
-                        url=url+"&sid="+Math.random();
+                        url=url+"?ne="+lok+"&nm="+nms;
+                        console.log(url);
+
                         ajaxku.onreadystatechange=stateChanged<?php echo $a;?>;
                         ajaxku.open("GET",url,true);
                         ajaxku.send(null);
@@ -386,6 +389,17 @@
                       }
                       return null;
                   }
+                   function stateChangedNms<?php echo $a;?>(){
+                      var data;
+                      if (ajaxku.readyState==4){
+                      data=ajaxku.responseText;
+                      if(data.length>=0){
+                      document.getElementById("nama_lokasi<?php echo $a;?>").innerHTML = data;
+                      }else{
+                      document.getElementById("nama_lokasi<?php echo $a;?>").value = "<option selected>Pilih Kota/Kab</option>";
+                      }
+                      }
+                  }
                   function stateChanged<?php echo $a;?>(){
                       var data;
                       if (ajaxku.readyState==4){
@@ -450,15 +464,23 @@
                       }
                   }
                   </script>
-                        <label >Node <?php echo $a;?> <span class="required">*</span>
+                        <label >Jalur <?php echo $a;?> <span class="required">*</span>
                         </label>
                       <div class="item form-group">
-                        <div class="col-md-3 col-sm-3 col-xs-12" id="nama_lokasi">
-                        <select class="form-control" name="nama_lokasi<?php echo $a;?>" id="nama_lokasi<?php echo $a;?>" onchange="ajaxlokasi<?php echo $a;?>(this.value)">
-                                 <option value="">Lokasi</option>
-                                <?php foreach($lokasi as $location){?>
-                                <option value="<?php echo $location->id_lokasi;?>"><?php echo $location->nama_lokasi?></option>
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <select class="form-control" name="nama_nms<?php echo $a;?>" id="nama_nms<?php echo $a;?>" onchange="ajaxnms<?php echo $a;?>(this.value)"> 
+                                <option value="">NMS</option>
+                           <?php foreach($port as $p){?>
+                                <option value="<?php echo $p->nama_nms;?>"><?php echo $p->nama_nms?></option>
                                 <?php } ?>
+                        </select>
+                      </div>
+                      </div>
+                      <div class="item form-group">
+                        <div class="col-md-3 col-sm-3 col-xs-12" id="nama_lokasi">
+                        <select class="form-control" name="nama_lokasi<?php echo $a;?>" id="nama_lokasi<?php echo $a;?>" onchange="ajaxlokasi<?php echo $a;?>(<?php echo $a; ?>)">
+                                 <option value="">Lokasi</option>
+                               
                         </select>
                         </div>
                         <div class="col-md-3 col-sm-3 col-xs-12">

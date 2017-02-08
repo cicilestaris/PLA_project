@@ -1,8 +1,21 @@
 <?php
 include "../koneksi.php";
-if (!empty($_GET['ne'])){
+if (!empty($_GET['nms'])){
+	$nms = $_GET['nms'];	
 	// if (ctype_digit($_GET['ne'])) {
-		$query = mysqli_query($conn,"SELECT * FROM ne where id_lokasi=$_GET[ne] group by nama_ne"); 
+		$query = mysqli_query($conn,"SELECT * FROM port where nama_nms='$nms' group by nama_lokasi"); 
+		echo"<option>Pilih Nama NE</option>";
+		while($d = mysqli_fetch_array($query,MYSQLI_BOTH)){
+			echo "<option value=".$d['nama_lokasi'].">".$d['nama_lokasi']."</option>";
+			// echo $d['nama_ne'];
+		}
+	// }
+}
+if (!empty($_GET['ne'])){
+	$lok = $_GET['ne'];	
+	$nms = $_GET['nm'];
+	// if (ctype_digit($_GET['ne'])) {
+		$query = mysqli_query($conn,"SELECT * FROM port where nama_lokasi='$lok' and nama_nms='$nms' group by nama_ne"); 
 		echo"<option>Pilih Nama NE</option>";
 		while($d = mysqli_fetch_array($query,MYSQLI_BOTH)){
 			echo "<option value=".$d['nama_ne'].">".$d['nama_ne']."</option>";
@@ -44,13 +57,8 @@ $l = $_GET['n'];
 	// if (ctype_digit($_GET['ne'])) {
 		echo $l."----------------";
 
-		$nama= mysqli_query($conn, "SELECT nama_lokasi FROM lokasi where id_lokasi='$l'");
-		$hasil = mysqli_fetch_assoc($nama);
-		foreach ($hasil as $key => $nama_lokasi) {
-			$nama_lok = $nama_lokasi;
-		}
 
-		$query = mysqli_query($conn,"SELECT * FROM port where shelf='$b' and nama_ne='$t' and nama_lokasi='$nama_lok' group by slot "); 
+		$query = mysqli_query($conn,"SELECT * FROM port where shelf='$b' and nama_ne='$t' and nama_lokasi='$l' group by slot "); 
 		if(!empty($query)){
 			echo "lala";
 		}

@@ -85,10 +85,11 @@ class Link extends CI_Controller {
 
     public function insert_jalur(){
        $data['jumlah_jalur'] =  $this->input->post('jalur');
-  
+       //  $this->db->set($data);
+       // $this->link_model->insert_jalur($data);
        $data['lokasi'] = $this->link_model->get_lokasi()->result();
        $data['link_statis'] = $this->link_model->get_link_statis()->result();
-       $data['port']= $this->tn_model->get_nms()->result();
+       $data['port']= $this->link_model->get_nms()->result();
       
         $this->load->view('admin/perangkat/create_link', $data);
 
@@ -107,24 +108,68 @@ class Link extends CI_Controller {
 
     public function create_link(){
        // $data['id_port'] = $this->input->post('id_port');
-		$data['host_a'] = $this->input->post('host_a');
-        $data['host_b'] = $this->input->post('host_b');
-        $data['fa_a']=$this->input->post('fa_a');
-        $data['fa_b']=$this->input->post('fa_b');
-       	$data['nms']=$this->input->post('nama_nms');;
-        $data['ne_a']=$this->input->post('ne1');
-        $data['board_a']=$this->input->post('board1');
-        $data['shelf_a']=$this->input->post('shelf1');
-        $data['slot_a']=$this->input->post('slot1');
-        $data['port_a']=$this->input->post('port1');
-        $data['ne_b']=$this->input->post('ne2');
-        $data['board_b']=$this->input->post('board2');
-        $data['shelf_b']=$this->input->post('shelf2');
-        $data['slot_b']=$this->input->post('slot2');
-        $data['port_b']=$this->input->post('port2');
+        $dataa['jumlah_jalur'] =  $this->input->post('jalur');
+        echo "lala".$dataa['jumlah_jalur'];
 
-		$this->link_model->insert_link($data);
+       // exit;
+        if($dataa['jumlah_jalur']<=2){
+    		$data['host_a'] = $this->input->post('host_a');
+            $data['host_b'] = $this->input->post('host_b');
+            $data['fa_a'] = $this->input->post('fa_a');
+            $data['fa_b'] = $this->input->post('fa_b');
+           	$data['nms'] = $this->input->post('nama_nms1');;
+            $data['ne_a'] = $this->input->post('ne1');
+            $data['board_a'] = $this->input->post('board1');
+            $data['shelf_a'] = $this->input->post('shelf1');
+            $data['slot_a'] = $this->input->post('slot1');
+            $data['port_a'] = $this->input->post('port1');
+            $data['ne_b'] = $this->input->post('ne2');
+            $data['board_b'] =$this->input->post('board2');
+            $data['shelf_b'] = $this->input->post('shelf2');
+            $data['slot_b'] = $this->input->post('slot2');
+            $data['port_b'] = $this->input->post('port2');
+            
+    		$this->link_model->insert_link($data);
+        }else{
+            $data['host_a'] = $this->input->post('host_a');
+            $data['host_b'] = $this->input->post('host_b');
+            $data['fa_a'] = $this->input->post('fa_a');
+            $data['fa_b'] = $this->input->post('fa_b');
+            $data['nms'] = $this->input->post('nama_nms1');;
+            $data['ne_a'] = $this->input->post('ne1');
+            $data['board_a'] = $this->input->post('board1');
+            $data['shelf_a'] = $this->input->post('shelf1');
+            $data['slot_a'] = $this->input->post('slot1');
+            $data['port_a'] = $this->input->post('port1');
+            $data['ne_b'] = $this->input->post('ne2');
+            $data['board_b'] =$this->input->post('board2');
+            $data['shelf_b'] = $this->input->post('shelf2');
+            $data['slot_b'] = $this->input->post('slot2');
+            $data['port_b'] = $this->input->post('port2');
+            
+            $this->link_model->insert_link($data);
+            $a=2;
+            $b=3;
+            for ($i=2; $i < $dataa['jumlah_jalur'] ; $i++) { 
+                # code...
 
+                $data2['nms']=$this->input->post('nama_nms'.$a);
+                $data2['ne_a']=$this->input->post('ne'.$a);
+                $data2['board_a']=$this->input->post('board'.$a);
+                $data2['shelf_a']=$this->input->post('shelf'.$a);
+                $data2['slot_a']=$this->input->post('slot'.$a);
+                $data2['port_a']=$this->input->post('port'.$a);
+                $data2['ne_b']=$this->input->post('ne'.$b);
+                $data2['board_b']=$this->input->post('board'.$b);
+                $data2['shelf_b']=$this->input->post('shelf'.$b);
+                $data2['slot_b']=$this->input->post('slot'.$b);
+                $data2['port_b']=$this->input->post('port'.$b);
+
+                $this->link_model->insert_link($data2);
+                $a++;
+                $b++;
+            }
+        }
       	$data['lokasi'] = $this->link_model->get_lokasi()->result();
 		$data['link_statis'] = $this->link_model->get_link_statis()->result();
 		
