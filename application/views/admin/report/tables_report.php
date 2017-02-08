@@ -199,7 +199,7 @@
                 <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
                   <div class="input-group">
 					<form action="<?php print site_url();?>/report/cari" method=POST>
-					<input type=text name=cari onchange="find()">				
+					<input type=text name=cari>				
 					<a href="<?php echo site_url('report');?>"><button type="submit" class="btn btn-primary">search</button></a>
 					</form>	
 				  </div>

@@ -27,7 +27,9 @@
 
 	<?php
 		include "config.php";
+		$no = 0;
 		$qrys=mysqli_query($conn,"select * from link_statis");
+		
 		
 		if(isset($_GET['x'])){
 			$c = $_GET['x'];
@@ -37,9 +39,10 @@
 		}
 		
 		while($result=mysqli_fetch_array($qrys,MYSQLI_BOTH)) {
-	
+		$no++;
+		
 		echo'<tr>
-			<td bgcolor="#FFFFFFFF">'.$result['id_link'].'</td>
+			<td bgcolor="#FFFFFFFF">'.$no.'</td>
 			<td bgcolor="#FFFFFFFF">'.$result['host_a'].'</td>
 			<td bgcolor="#FFFFFFFF">'.$result['host_b'].'</td>
 			<td bgcolor="#FFFFFFFF">'.$result['fa_a'].'</td>
