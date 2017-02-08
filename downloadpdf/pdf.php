@@ -1,12 +1,10 @@
 <?php
-//koneksi ke database
-mysql_connect("localhost","root","");
-mysql_select_db("tn");
- 
+include "conn.php";
+
 //mengambil data dari tabel
-$sql=mysql_query("SELECT * FROM link_statis");
+$sql=mysqli_query($conn,"SELECT * FROM link_statis");
 $data = array();
-while ($row = mysql_fetch_assoc($sql)) {
+while ($row = mysqli_fetch_assoc($sql)) {
     array_push($data, $row);
 }
  
@@ -41,7 +39,7 @@ $pdf->SetFont('Arial','B','12'); //Font Arial, Tebal/Bold, ukuran font 16
 $pdf->Cell(0,20, $judul, '0', 1, 'C');
  
 //Header Table
-$pdf->SetFont('Arial','','9');
+$pdf->SetFont('Arial','','10');
 $pdf->SetFillColor(139, 69, 19); //warna dalam kolom header
 $pdf->SetTextColor(255); //warna tulisan putih
 $pdf->SetDrawColor(222, 184, 135); //warna border
