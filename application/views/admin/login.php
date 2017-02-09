@@ -30,33 +30,26 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-            <form>
-              <h1>Login Form</h1>
+			<?php echo validation_errors(); ?>
+			<p style="color:red;"><?php echo $this->session->flashdata('notification')?></p> 
+			<?php echo form_open('Home/login')?>
+            <h2>Login</h2>
               <div>
-                <input type="text" class="form-control" placeholder="Username" required="" />
+				<input type="text" name="username" placeholder="Username"  value="<?php echo set_value('username')?>" />
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Password" required="" />
+			  <input type="password" name="password" placeholder="Password" value="<?php echo set_value('password')?>" />
               </div>
               <div>
-                <a class="btn btn-default submit" href="index.html">Log in</a>
-                <a class="reset_pass" href="#">Lost your password?</a>
+				<input type="submit" name="masuk" value="Masuk"/>
               </div>
 
-              <div class="clearfix"></div>
+              <!--<div class="clearfix"></div>
 
               <div class="separator">
                 <p class="change_link">New to site?
-                  <a href="#signup" class="to_register"> Create Account </a>
+                  <a href="#signup" class="to_register">Create Account </a>
                 </p>
-
-                <div class="clearfix"></div>
-                <br />
-
-                <div>
-                  <p>©2017 All Rights Reserved.</p>
-                </div>
-              </div>
             </form>
           </section>
         </div>
@@ -91,7 +84,7 @@
                 <div>
                   <p>©2017 All Rights Reserved.</p>
                 </div>
-              </div>
+              </div>-->
             </form>
           </section>
         </div>

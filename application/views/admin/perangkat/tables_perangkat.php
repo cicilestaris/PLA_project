@@ -64,7 +64,7 @@
                 <ul class="nav side-menu">
                 <li><a href="<?php echo site_url('Home/table_nms');?>"><i class="fa fa-table"></i> NMS </a>
                 <li><a href="<?php echo site_url('link');?>"><i class="fa fa-table"></i> Transport Users </a></li>
-                <li><a href="<?php echo site_url('Report/table_report');?>"><i class="fa fa-table"></i> Report </a></li>
+                <li><a href="<?php echo site_url('Report');?>"><i class="fa fa-table"></i> Report </a></li>
         </li>
                 </ul>
               </div>

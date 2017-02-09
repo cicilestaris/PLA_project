@@ -7,9 +7,48 @@ class Home extends CI_Controller {
 		parent::__construct();
 		$this->load->model('tn_model');
 		$this->load->library('csvimport');
+		$this->load->model('admin_model');
+		$this->load->helper('url');
+		$this->load->helper('form');
+		$this->load->library('form_validation');
 	}
-
+	
 	public function index(){
+		$this->load->view('admin/login');
+	}
+	
+	// memeriksa keberadaan akun username
+	public function login(){
+		$username = $this->input->post('username', 'true');
+		$password = $this->input->post('password', 'true');
+		$temp_account = $this->admin_model->check_admin_account($username, $password)->row();
+
+		// check account
+		$num_account = count($temp_account);
+		$this->form_validation->set_rules('username', 'Username', 'required');
+		$this->form_validation->set_rules('password', 'Password', 'required');
+		
+		if ($this->form_validation->run() == FALSE){
+			$this->load->view('admin/login');
+		}else{
+			if ($num_account > 0){
+				// kalau ada set session
+				$array_items = array(
+					'id_admin' => $temp_account->id_admin,
+					'username' => $temp_account->username,
+					'logged_in' => true
+				);
+				$this->session->set_userdata($array_items);
+				redirect(site_url('Home/sukses'));
+			}else{
+				// kalau ga ada diredirect lagi ke halaman login
+				$this->session->set_flashdata('notification', 'Peringatan : username dan password salah');
+				redirect(site_url('home'));
+			}	
+		}
+	}
+	
+	public function sukses(){
 		$data['port'] = $this->tn_model->get_port()->result();
 		$data['merk'] = $this->tn_model->get_merk_by_id($data['port'][0]->id_merk)->result();
 		$this->load->view('admin/index',$data);	
