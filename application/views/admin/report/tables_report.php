@@ -287,6 +287,7 @@
 						$x = $_SESSION['x'];
 					}
 					?>
+					
                     <td>
                        <a href="<?php echo site_url('Report/exportcsv');?>"><button type="submit" class="btn btn-primary">Download Report (.csv)</button></a>
 					   <a href="<?php echo base_url('Download/download_excel.php?x=').$x;?>"><button type="submit" class="btn btn-primary">Download Report (.xls)</button></a>

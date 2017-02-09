@@ -1,6 +1,5 @@
 <?php
 include "conn.php";
-
 //mengambil data dari tabel
 $sql=mysqli_query($conn,"SELECT * FROM link_statis");
 $data = array();
@@ -11,9 +10,9 @@ while ($row = mysqli_fetch_assoc($sql)) {
 //mengisi judul dan header tabel
 $judul = "DATA TEKNIS TRANSPORT";
 $header = array(
-array("label"=>"No", "length"=>10, "align"=>"L"),
+array("label"=>"No", "length"=>30, "align"=>"L"),
 array("label"=>"Node A", "length"=>30, "align"=>"L"),
-array("label"=>"Node B", "length"=>50, "align"=>"L"),
+array("label"=>"Node B", "length"=>30, "align"=>"L"),
 array("label"=>"Client A", "length"=>30, "align"=>"L"),
 array("label"=>"Client B", "length"=>30, "align"=>"L"),
 array("label"=>"NMS", "length"=>30, "align"=>"L"),
@@ -22,11 +21,6 @@ array("label"=>"Board A", "length"=>30, "align"=>"L"),
 array("label"=>"Shelf A", "length"=>30, "align"=>"L"),
 array("label"=>"Slot A", "length"=>30, "align"=>"L"),
 array("label"=>"Port A", "length"=>30, "align"=>"L"),
-array("label"=>"NE B", "length"=>30, "align"=>"L"),
-array("label"=>"Board B", "length"=>30, "align"=>"L"),
-array("label"=>"Shelf B", "length"=>30, "align"=>"L"),
-array("label"=>"Slot B", "length"=>30, "align"=>"L"),
-array("label"=>"Port B", "length"=>30, "align"=>"L"),
 );
  
 //memanggil fpdf
@@ -35,7 +29,7 @@ $pdf = new FPDF('L');
 $pdf->AddPage();
  
 //tampilan Judul Laporan
-$pdf->SetFont('Arial','B','12'); //Font Arial, Tebal/Bold, ukuran font 16
+$pdf->SetFont('Arial','B','16'); //Font Arial, Tebal/Bold, ukuran font 16
 $pdf->Cell(0,20, $judul, '0', 1, 'C');
  
 //Header Table
@@ -61,8 +55,7 @@ $pdf->Cell($header[$i]['length'], 5, $cell, 1, '0', $kolom['align'], $fill);
 }
 $fill = !$fill;
 $pdf->Ln();
-}
- 
+ }
 //output file pdf
 $pdf->Output();
 ?>
