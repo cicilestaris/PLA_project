@@ -213,7 +213,7 @@
            
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Create data link</h2>
+                    <h2>Create Single Data Link</h2>
                     <ul class="nav navbar-right panel_toolbox">
 
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
@@ -243,7 +243,32 @@
                    </div>
                    </div>
               </div>
+               <div class="col-md-12 col-sm-12 col-xs-12">
+           
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Create Multiple Data Link</h2>
+                    <ul class="nav navbar-right panel_toolbox">
 
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+
+                      <div class="item form-group">
+              
+
+                  <td>
+                       <a href="<?php echo site_url('link/insert_double_perangkat');?>"><button type="submit" class="btn btn-primary">Insert Multiple Data</button></a>
+                      </td>
+                   
+             
+                      </div>
+               
+                   </div>
+                   </div>
+              </div>
                   <div class="col-md-12 col-sm-12 col-xs-12">
            
                 <div class="x_panel">
