@@ -325,9 +325,9 @@
                       </tbody>
                     </table>
                     <br />
-					<ul class="pagination">
+					<ul class="pagination pagination">
                           <li ><?php echo $this->pagination->create_links(); ?></li>
-                    </ul
+                    </ul>
 					<br />
 					<br />
                  </div>

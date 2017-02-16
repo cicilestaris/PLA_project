@@ -37,7 +37,7 @@ class Link extends CI_Controller {
                 $csv_array = $this->csvimport->get_array($file_path);
                 foreach ($csv_array as $roww) {
                     $data2 = array(
-                        'id_link'=>$roww['id_link'],
+                        // 'id_link'=>$roww['id_link'],
                         'host_a'=>$roww['host_a'],
                         'host_b'=>$roww['host_b'],
                         'fa_a'=>$roww['fa_a'],
