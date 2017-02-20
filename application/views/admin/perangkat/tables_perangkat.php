@@ -280,6 +280,7 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
+                  <div class="table-responsive">
                   <table id="datatable-buttons" class="table table-hover">
                       <thead>
                         <tr>
@@ -343,6 +344,7 @@
                 <?php }?>  
                       </tbody>
                     </table>
+                    </div>
                     </div>
                         <br />
                

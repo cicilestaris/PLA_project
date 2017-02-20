@@ -224,7 +224,9 @@
                        <a href="<?php echo site_url('Home/insert_double_nms');?>"><button type="submit" class="btn btn-success">Insert Multiple Data</button></a>
                       </td>
              
-                  <div class="x_content"><table id="datatable-buttons" class="table table-hover">
+                  <div class="x_content">
+                  <div class="table-responsive">
+                  <table id="example1" class="table table-bordered table-striped">
                       <thead>
                         <tr>
                           <th>No</th>
@@ -285,7 +287,7 @@
                           <a href="<?php echo site_url('Home/edit_nms/'.$portt->id_port);?>" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
                           <a href="<?php echo site_url('Home/delete_nms/'.$portt->id_port);?>" class="btn btn-danger btn-xs" onclick="return doconfirm();"><i class="fa fa-trash-o"></i> Delete </a>
                           <!-- Trigger the modal with a button -->
-                          <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal">Details<?php echo $portt->id_port?></button>
+                        
                           <!-- Modal -->
                           <div class="modal fade" id="myModal" role="dialog">
                           <div class="modal-dialog">
@@ -295,26 +297,7 @@
                               <button type="button" class="close" data-dismiss="modal">&times;</button>
                               <h4 class="modal-title">Data Transport Detail </h4>
                             </div>
-                            <div class="modal-body">
-                              <p>Data Transport</p>
-                                <table>
-                                  <tr>
-                                    <td>NO</td>
-                                    <td>:</td>
-                                    <td><?php echo $portt->id_port?></td>
-                                  </tr>
-                                  <tr>
-                                    <td>NMS</td>
-                                    <td>:</td>
-                                    <td><?php echo $portt->nama_nms?></td>
-                                  </tr>
-                                  <tr>
-                                    <td>NMS</td>
-                                    <td>:</td>
-                                    <td><?php echo $portt->user?></td>
-                                  </tr>
-                                </table>
-                            </div>
+                           
                             <div class="modal-footer">
                               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                             </div>
@@ -324,6 +307,7 @@
                 <?php }?>  
                       </tbody>
                     </table>
+                    </div>
                     <br />
 					<ul class="pagination pagination">
                           <li ><?php echo $this->pagination->create_links(); ?></li>
@@ -388,6 +372,19 @@
     <script src="<?php echo base_url('asset/admin/build/js/custom.min.js'); ?>"></script>
     
     <!-- Datatables -->
+    <script>
+  $(function () {
+    $("#example1").DataTable();
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false
+    });
+  });
+</script>
     <script>
     function doconfirm(){
       job = confirm("Are you sure to delete permanently?");

@@ -36,30 +36,33 @@ class Link extends CI_Controller {
             if ($this->csvimport->get_array($file_path)) {
                 $csv_array = $this->csvimport->get_array($file_path);
                 foreach ($csv_array as $roww) {
-                    $data2 = array(
-                        // 'id_link'=>$roww['id_link'],
-                        'host_a'=>$roww['host_a'],
-                        'host_b'=>$roww['host_b'],
-                        'fa_a'=>$roww['fa_a'],
-                        'fa_b'=>$roww['fa_b'],
-                        'nms'=>$roww['nms'],
-                        'ne_a'=>$roww['ne_a'],
-                        'board_a'=>$roww['board_a'],
-                        'rack_a'=>$roww['rack_a'],
-                        'shelf_a'=>$roww['shelf_a'],
-                        'slot_a'=>$roww['slot_a'],
-                        'port_a'=>$roww['port_a'],
-                        'freq_a'=>$roww['freq_a'],
-                        'ne_b'=>$roww['ne_b'],
-                        'board_b'=>$roww['board_b'],
-                        'rack_b'=>$roww['rack_b'],
-                        'shelf_b'=>$roww['shelf_b'],
-                        'slot_b'=>$roww['slot_b'],
-                        'port_b'=>$roww['port_b'],
-                        'freq_b'=>$roww['freq_b'],
+           
+                            $data2 = array(
+                            // 'id_link'=>$roww['id_link'],
+                            'host_a'=>$roww['host_a'],
+                            'host_b'=>$roww['host_b'],
+                            'fa_a'=>$roww['fa_a'],
+                            'fa_b'=>$roww['fa_b'],
+                            'nms'=>$roww['nms'],
+                            'ne_a'=>$roww['ne_a'],
+                            'board_a'=>$roww['board_a'],
+                            'rack_a'=>$roww['rack_a'],
+                            'shelf_a'=>$roww['shelf_a'],
+                            'slot_a'=>$roww['slot_a'],
+                            'port_a'=>$roww['port_a'],
+                            'freq_a'=>$roww['freq_a'],
+                            'ne_b'=>$roww['ne_b'],
+                            'board_b'=>$roww['board_b'],
+                            'rack_b'=>$roww['rack_b'],
+                            'shelf_b'=>$roww['shelf_b'],
+                            'slot_b'=>$roww['slot_b'],
+                            'port_b'=>$roww['port_b'],
+                            'freq_b'=>$roww['freq_b'],
 
-                    );
-                    $this->tn_model->insert_csv_link($data2);
+                        );
+                        $this->tn_model->insert_csv_link($data2);
+                        
+                    
                 }
                 $this->session->set_flashdata('success', 'Csv Data Imported Succesfully');
 

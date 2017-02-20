@@ -103,8 +103,7 @@ class Csvimport {
         $row = 0;
         while (($data = fgetcsv($this->handle, 0, $this->delimiter)) !== FALSE) 
         {     
-            if ($data[0] != NULL) 
-            {
+           
                 if($row < $this->initial_line)
                 {
                     $row++;
@@ -141,7 +140,7 @@ class Csvimport {
                 unset($data);
             
                 $row++;
-            }
+            
         }
  
         $this->_close_csv();
